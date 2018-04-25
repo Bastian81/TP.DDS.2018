@@ -1,6 +1,6 @@
 package general;
 
-public class Cliente extends Usuarios {
+public class Cliente extends Usuario {
 	
 		public String tipoDocumento;
 		public int documento;

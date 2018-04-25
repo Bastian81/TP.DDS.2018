@@ -1,6 +1,6 @@
 package general;
 
-public class Administrador extends Usuarios {
+public class Administrador extends Usuario {
 	
 	public int numId;
 	//fechaDeAlta; Ver como manejar fechas en java(librerias)
