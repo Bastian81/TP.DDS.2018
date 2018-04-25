@@ -1,12 +1,12 @@
 package general;
 
-public class Dispositivos {
+public class Dispositivo {
 	
 	   private String nombre;
 	    private Float consumo;
 	    private Boolean estado;
 
-	    public Dispositivos(String nombre, Float consumo, Boolean estado) 
+	    public Dispositivo(String nombre, Float consumo, Boolean estado) 
 	    {
 	        this.nombre = nombre;
 	        this.consumo = consumo;

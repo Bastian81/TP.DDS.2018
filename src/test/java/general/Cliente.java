@@ -5,7 +5,7 @@ public class Cliente extends Usuario {
 		public String tipoDocumento;
 		public int documento;
 		int telefonoContacto;
-		public Dispositivos dispositivos;
+		public Dispositivo dispositivos;
 		
 		//fechaDeAlta;
 		//categoria
@@ -21,7 +21,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 
 
 
-public boolean algunoEncendido(Dispositivos dispositivos) 
+public boolean algunoEncendido(Dispositivo dispositivos) 
 {
 	// hacer dispoositivos -> any -> esta encendido
 	return false;

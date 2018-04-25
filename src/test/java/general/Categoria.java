@@ -1,6 +1,6 @@
 package general;
 
-public class Categorias {
+public class Categoria {
 
 	public String tipo;
 	public float consumoMensualMin;
@@ -10,7 +10,7 @@ public class Categorias {
 	
 	// constructor
 	
-	public Categorias(String tipo, float consumoMin, float consumoMax, float cargoFijo, float cargoVar) 
+	public Categoria(String tipo, float consumoMin, float consumoMax, float cargoFijo, float cargoVar) 
 	{
 		this.tipo = tipo;
 		consumoMensualMin = consumoMin;
