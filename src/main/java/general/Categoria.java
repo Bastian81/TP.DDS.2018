@@ -2,11 +2,11 @@ package general;
 
 public class Categoria {
 
-	public String tipo;
-	public float consumoMensualMin;
-	public float consumoMensualMax;
-	public float cargoMensualFijo;
-	public float cargoMensualVar;
+	 String tipo;
+	 float consumoMensualMin;
+	 float consumoMensualMax;
+	 float cargoMensualFijo;
+	 float cargoMensualVar;
 	
 	// constructor
 	
@@ -26,10 +26,23 @@ public class Categoria {
 	public float consumoMensualMax() {return consumoMensualMax;}
 	public float cargoMensualFijo() {return cargoMensualFijo;}
 	public float cargoMensualVar()  {return cargoMensualVar;}
-	
-	public float estimarFacturacionMensual(Cliente cliente) 
+
+
+	public float estimarFacturacionMensual(Cliente cliente)
 	{
-		return 12;
+		float consumo = cliente.consumoMensual();
+		
+		return (cargoMensualFijo + cargoMensualVar * consumo);
+		
 	}
 	
+	public boolean pertence(Cliente unCliente){
+		
+		float consumo = unCliente.consumoMensual();
+		
+		return 
+		  (consumoMensualMin<consumo && 
+		  (consumo <=  consumoMensualMax)|| consumoMensualMax==0 );		  
+
+	}
 }
