@@ -1,6 +1,8 @@
 package general;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 
@@ -25,6 +27,26 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	
 	}
 
+public int cantDispositivosTotal() 
+	{
+	return dispositivos.size();
+	}
+
+public int cantDispositivosEncendidos() 
+	{
+	return dispositivosEncendidos().size();
+	}
+
+public int cantDispositivosApagados() 
+	{
+	return cantDispositivosTotal() - cantDispositivosEncendidos();
+	}
+
+public List<Dispositivo> dispositivosEncendidos() 
+	{
+	return dispositivos.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
+			 .collect(Collectors.toList());
+	}
 
 public boolean algunoEncendido() 
 {
