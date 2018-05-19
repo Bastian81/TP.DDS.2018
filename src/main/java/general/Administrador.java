@@ -26,9 +26,4 @@ public class Administrador extends Usuario {
 
 
 }
-<<<<<<< HEAD
-//esto es un comentario
-//otro
-=======
-//esto es un comentario asdasd
->>>>>>> 1819267d1fdadf3735657ee9b432a18a130d2847
+
