@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 import org.junit.Before;
 import org.junit.Test;
