@@ -1,0 +1,9 @@
+/bin/
+
+/target/
+
+/.idea/
+pom.xml
+.classpath
+.settings/org.eclipse.jdt.core.prefs
+target/.gitignore
