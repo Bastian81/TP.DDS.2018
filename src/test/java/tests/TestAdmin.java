@@ -11,6 +11,7 @@ import org.junit.Test;
 import general.Administrador;
 import helpers.FileToStringReader;
 import helpers.JSONLoader;
+import helpers.DatosJSON;
 
 public class TestAdmin {
 

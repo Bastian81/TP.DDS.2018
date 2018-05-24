@@ -12,6 +12,7 @@ import general.Categoria;
 import general.Cliente;
 import helpers.FileToStringReader;
 import helpers.JSONLoader;
+import helpers.DatosJSON;
 
 public class TestCliente {
 

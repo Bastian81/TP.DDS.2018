@@ -1,10 +1,7 @@
 package helpers;
 import com.google.gson.Gson;
 
-import tests.DatosJSON;
-
-
-public class JSONLoader 
+public class JSONLoader
 {
 
   String filePath;  
