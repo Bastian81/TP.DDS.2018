@@ -10,9 +10,9 @@ public class Administrador extends Usuario {
 	 int adminID;
 	 Date fechaDeAlta;
 	
-	public Administrador(String nombre, String ap, String userName, String password, String domicilio, int numeroId)
+	public Administrador(String nombre, String ap, String userName, String password, int numeroId)
 	{
-		super(nombre,ap,userName,password,domicilio);
+		super(nombre,ap,userName,password);
 		this.adminID = numeroId;
 	}
 

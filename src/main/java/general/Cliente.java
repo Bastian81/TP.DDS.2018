@@ -10,6 +10,7 @@ public class Cliente extends Usuario {
 		String tipoDocumento;
 		int documento;
 		int telefonoContacto;
+	    String domicilio;
 		List<Dispositivo> dispositivos;
 		Categoria categoria;
 		
@@ -17,12 +18,13 @@ public class Cliente extends Usuario {
 		//categoria
 		
 		// Constructor
-public Cliente(String nom, String ap, String nomUsuario, String contra, String domicilio,String tipoDoc,int doc, int tel) 
+public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel)
 	{
-	super(nom,ap,nomUsuario,contra,domicilio);
+	super(nom,ap,nomUsuario,contra);
 	tipoDocumento = tipoDoc;
 	documento = doc;
 	telefonoContacto = tel;
+	domicilio = direccion;
 	
 	}
 
