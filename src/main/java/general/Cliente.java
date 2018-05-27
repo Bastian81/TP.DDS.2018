@@ -1,4 +1,8 @@
 package general;
+import dispositivo.Dispositivo;
+import dispositivo.Inteligente;
+import dispositivo.Estandar;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +17,7 @@ public class Cliente extends Usuario {
 	    String domicilio;
 		List<Dispositivo> dispositivos;
 		Categoria categoria;
+		int puntos;
 		
 		//fechaDeAlta;
 		//categoria
@@ -25,8 +30,9 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	documento = doc;
 	telefonoContacto = tel;
 	domicilio = direccion;
-	
+	puntos = 0;
 	}
+
 
 public int cantDispositivosTotal() 
 	{
@@ -42,6 +48,8 @@ public int cantDispositivosApagados()
 	{
 	return cantDispositivosTotal() - cantDispositivosEncendidos();
 	}
+
+	//Adaptar estos metodos
 
 public List<Dispositivo> dispositivosEncendidos() 
 	{
@@ -92,6 +100,20 @@ public boolean algunoEncendido()
 	
 		return categoria.tipo();
 	}
+
+
+
+	public void agregarDispositivo(Dispositivo nuevoDispositivo)
+	{
+		dispositivos.add(nuevoDispositivo);
+		if(!serialRepetida(nuevoDispositivo.nroSerial()))
+            puntos += nuevoDispositivo.puntos();
+	}
+
+	public boolean serialRepetida(int serial_nueva)
+    {
+        return dispositivos.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva));
+    }
 	
 }
 
