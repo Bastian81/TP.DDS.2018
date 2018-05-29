@@ -4,8 +4,10 @@ import dispositivo.Inteligente;
 import dispositivo.Estandar;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.joda.time.DateTime;
 
 
 
@@ -18,9 +20,7 @@ public class Cliente extends Usuario
     String domicilio;
     Categoria categoria;
     List<Dispositivo> dispositivos;
-
-		
-		//fechaDeAlta;
+    Date fechaDeAlta;
 		
 		// Constructor
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel)
@@ -30,6 +30,8 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	documento = doc;
 	telefonoContacto = tel;
 	domicilio = direccion;
+	DateTime alta = new DateTime();
+	this.fechaDeAlta = alta;
 	puntos = 0;
 }
 

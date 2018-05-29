@@ -15,14 +15,15 @@ public Administrador(String nombre, String ap, String userName, String password,
 	{
 		super(nombre,ap,userName,password);
 		this.adminID = numeroId;
+		DateTime alta = new DateTime();
+		this.fechaDeAlta = alta;
 	}
 
 public int mesesAdministrando() {
 		
 		DateTime hoy = new DateTime();
-		DateTime fechaAlta = new DateTime(fechaDeAlta);		
 		
-		return Months.monthsBetween(fechaAlta, hoy).getMonths();
+		return Months.monthsBetween(fechaDeAlta, hoy).getMonths();
 	}
 
 
