@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.joda.time.DateTime;
+import controlador.Sensor;
 
 
 
@@ -21,6 +22,7 @@ public class Cliente extends Usuario
     Categoria categoria;
     List<Dispositivo> dispositivos;
     Date fechaDeAlta;
+    List<Sensor> sensores;
 		
 		// Constructor
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel)
