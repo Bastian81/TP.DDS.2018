@@ -8,7 +8,7 @@ import org.joda.time.Months;
 public class Administrador extends Usuario {
 	
 	 int adminID;
-	 Date fechaDeAlta;
+	 DateTime fechaDeAlta;
 
 	// Constructor
 public Administrador(String nombre, String ap, String userName, String password, int numeroId)

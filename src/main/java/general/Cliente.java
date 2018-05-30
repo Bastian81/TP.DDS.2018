@@ -22,10 +22,11 @@ public class Cliente extends Usuario
     int telefonoContacto;
     String domicilio;
     Categoria categoria;
-    List<Dispositivo> dispositivos;
-    Date fechaDeAlta;
+    List<Inteligente> dispositivosInteligentes;
+    List<Estandar> dipositivosEstandares;
+    DateTime fechaDeAlta;
     List<Sensor> sensores;
-		
+
 		// Constructor
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel)
 {
@@ -42,7 +43,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 
 public int cantDispositivosTotal() 
 {
-	return dispositivos.size();
+	return dispositivosInteligentes.size() + dipositivosEstandares.size();
 }
 
 public int cantDispositivosEncendidos() 
@@ -59,20 +60,20 @@ public int cantDispositivosApagados()
 
 public List<Dispositivo> dispositivosEncendidos() 
 {
-	return dispositivos.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
+	return dispositivosInteligentes.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
 			 .collect(Collectors.toList());
 }
 
 public boolean algunoEncendido() 
 {
-    return dispositivos.stream().anyMatch(unDispositivo->unDispositivo.estaEncendido());
+    return dispositivosInteligentes.stream().anyMatch(unDispositivo->unDispositivo.estaEncendido());
 }
 
 public float consumoMensual()
 {
     float consumo = 0;
 
-    for(Dispositivo dispositivo:dispositivos)
+    for(Dispositivo dispositivo:dispositivosInteligentes)
 			consumo+= dispositivo.getConsumo();
 
     return consumo;
@@ -110,16 +111,23 @@ public String nombreCategoria()
 
 
 
-public void agregarDispositivo(Dispositivo nuevoDispositivo)
+public void agregarInteligente(Inteligente nuevoDispositivo)
 {
-		dispositivos.add(nuevoDispositivo);
+
+		dispositivosInteligentes.add(nuevoDispositivo);
 		if(!serialRepetida(nuevoDispositivo.nroSerial()))
             puntos += nuevoDispositivo.puntos();
 }
 
+public void agregarEstandar(Estandar nuevoDispositivo)
+	{
+
+		dipositivosEstandares.add(nuevoDispositivo);
+	}
+
 public boolean serialRepetida(int serial_nueva)
 {
-        return dispositivos.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva));
+        return dispositivosInteligentes.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva)); //No me importa si es estandar ya que no da puntos
 }
 	
 }

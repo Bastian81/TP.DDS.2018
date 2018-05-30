@@ -17,6 +17,7 @@ public class Dispositivo {
     public int nroSerial() {return nroSerial;}
     public String getNombre() {return nombre;}
     public Float getConsumo() {return consumo;}
+    public Boolean esInt() {return false;}
 
     public int puntos() {return 0;}
 

@@ -8,5 +8,8 @@ public class Estandar extends Dispositivo{
         this.horasPorDia = horasPorDia;
     }
 
+
+
+
     //Posee el consumo estandar que esta en Dispositivo
 }

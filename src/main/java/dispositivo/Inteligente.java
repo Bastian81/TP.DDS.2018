@@ -49,15 +49,17 @@ public class Inteligente extends Dispositivo {
     }
     public Boolean estaEncendido() {return estado.estaEncendido();}
 
+
+
     // Metodos para calcular el consumo
 
 
     // public float getConsumoPorHoras(int cantidadHoras)
 
-    //    public float consumoPeriodo(fechaInicio,fechaFin)
+    // public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)  // Problema para obtener fechas y compararlas
 
 
-
+    public Boolean esInt() {return true;}
     public int puntos() {return 15;}
 
 }
