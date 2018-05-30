@@ -1,6 +1,6 @@
 package dispositivo;
 
-public class Dispositivo {
+public abstract class Dispositivo {
 
     private String nombre;
     private int nroSerial;
