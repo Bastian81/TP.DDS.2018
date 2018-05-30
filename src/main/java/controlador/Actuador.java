@@ -1,4 +1,8 @@
 package controlador;
 
-public class Actuador {
+public class Actuador implements Observer {
+
+    public void Update() {
+        
+    }
 }
