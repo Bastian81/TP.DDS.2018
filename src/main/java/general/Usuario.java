@@ -1,6 +1,6 @@
 package general;
 
-public class Usuario {
+public abstract class Usuario {
 		
 	public String nombre;
 	public String apellido;
