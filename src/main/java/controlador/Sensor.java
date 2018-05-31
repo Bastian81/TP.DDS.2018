@@ -1,38 +1,28 @@
 package controlador;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Sensor implements Subject{
+public class Sensor implements SensorSubject {
 
-    public boolean estado;
-    public List<Regla> reglas;
-    private ArrayList<Observer> observadores = new ArrayList<Observer>();
+    private ArrayList<RuleObserver> observadores = new ArrayList<RuleObserver>();
 
-    public void attach(Observer observador) {
+    public void attach(RuleObserver observador) {
         observadores.add(observador);
     }
 
-    public void detach(Observer observador) {
+    public void detach(RuleObserver observador) {
         observadores.remove(observador);
     }
 
-    public void informarCambio () {
-        if (this.cumpleReglas()){
-            this.notificar();
-        }
+    public void medicion(BigDecimal unValor){
+        this.notificar(unValor);
     }
 
-    public boolean cumpleReglas() {
-
-        reglas.stream().allMatch(regla -> regla.cumpleRegla());
-    }
-
-    public void notificar() {
+    public void notify(BigDecimal unValor) {
         for (int i = 0; i < observadores.size(); i++){
-            observadores.get(i).Update();
+            observadores.get(i).Update(unValor);
         }
-
     }
 }
 
