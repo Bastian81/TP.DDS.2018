@@ -4,8 +4,13 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import estado.Estado;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistorialConsumo {
+
     Estado estadoActual;
     DateTime fechaEstado;
 
@@ -17,5 +22,20 @@ public class HistorialConsumo {
 
     public Estado getEstadoActual() {return estadoActual;}
     public DateTime getFechaEstado() {return fechaEstado;}
+
+
+    public double tiempoUso(List<HistorialConsumo> listaConsumo)
+    {
+        return Days.daysBetween(fechaEstado,fechaSiguiente(listaConsumo)).getDays()/24;
+    }
+
+    public DateTime fechaSiguiente(List<HistorialConsumo> listaConsumo)
+    {
+        if(fechaEstado == listaConsumo.get(listaConsumo.size() - 1).getFechaEstado())
+        {
+           return new DateTime();
+        }
+        return listaConsumo.stream().filter(historialConsumo -> fechaEstado.isBefore(historialConsumo.getFechaEstado())).collect(Collectors.toList()).get(0).getFechaEstado();
+    }
 
 }

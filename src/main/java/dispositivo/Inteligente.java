@@ -1,6 +1,7 @@
 package dispositivo;
 import estado.Estado;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,14 +53,27 @@ public class Inteligente extends Dispositivo {
     // Metodos para calcular el consumo
 
 
-    // public float getConsumoPorHoras(int cantidadHoras)
+    public double getConsumoPorHoras(int cantidadHoras)
+    {
+        return consumoPeriodo(obtenerFechaAnterior(cantidadHoras),new DateTime());
+    }
+    public DateTime obtenerFechaAnterior(int cantHoras)
+    {
+        return new DateTime().plusHours(-cantHoras);
+    }
 
-    public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)  // Problema para obtener fechas y compararlas
+    public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)
     {
         List<HistorialConsumo> listaAux;
-        listaAux = historialConsumo.stream().filter(unCambioHistorial -> betweenPeriodo(unCambioHistorial.getFechaEstado(),fechaInicio,fechaFin)).collect(Collectors.toList());;
-       return listaAux.stream().mapToDouble(unCambioHistorial -> (unCambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo())).sum();
+        listaAux = historialConsumo.stream().filter(unCambioHistorial -> betweenPeriodo(unCambioHistorial.getFechaEstado(),fechaInicio,fechaFin)).collect(Collectors.toList());
+       return listaAux.stream().mapToDouble(unCambioHistorial -> calculoConsumoCompleto(unCambioHistorial,listaAux)).sum();
     }
+
+    public double calculoConsumoCompleto(HistorialConsumo cambioHistorial, List<HistorialConsumo> listaCambiosHistorial)
+    {
+        return cambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo()*cambioHistorial.tiempoUso(listaCambiosHistorial);
+    }
+
 
     public Boolean betweenPeriodo (DateTime fechaEstado,DateTime fechaInicio,DateTime fechaFin)
     {
