@@ -1,8 +1,16 @@
 package controlador;
 
-public class Actuador implements Observer {
+import dispositivo.Inteligente;
 
-    public void Update() {
-        
-    }
+public class Actuador {
+
+    Inteligente dispositivo;
+
+public Actuador(Inteligente unDispositivo) {
+
+    dispositivo = unDispositivo;
+}
+
+public void actuar(){}
+
 }
