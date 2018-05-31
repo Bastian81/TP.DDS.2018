@@ -1,17 +1,37 @@
 package controlador;
 
-import java.util.List;
-import java.util.concurrent.locks.Condition;
+import dispositivo.Inteligente;
 
-public class Regla {
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
-    List<Condition> condiciones;
+public class Regla implements RuleObserver {
 
-public Regla(Condition condicion) {
+    ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
+    ArrayList<Condicion> condiciones = new ArrayList<Condicion>();
+
+public void agregarCondicion(Condicion condicion) {
 
     condiciones.add(condicion);
 }
 
-public boolean cumpleRegla()
+public void agregarActuador(Condicion condicion) {
 
+    condiciones.add(condicion);
+}
+
+public void Update(BigDecimal unValor) {
+    if (this.cumpleRegla(unValor)){
+        this.actuar();
+    }
+}
+
+public boolean cumpleRegla(BigDecimal unValor) {
+    return condiciones.stream().allMatch(condicion -> condicion.cumple(unValor))
+}
+
+public void actuar(){
+
+    actuadores.stream().forEach(actuador -> actuador.actuar());
+}
 }
