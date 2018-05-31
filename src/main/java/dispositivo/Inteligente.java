@@ -1,18 +1,16 @@
 package dispositivo;
-import estado.Ahorro;
-import estado.Apagado;
-import estado.Encendido;
 import estado.Estado;
 import org.joda.time.DateTime;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class Inteligente extends Dispositivo {
 
     private byte macAddress;
     private Estado estado;
-    public List<Estado> listaEstados;
-    public List<DateTime> listaFechas;
+    public List<HistorialConsumo> historialConsumo;
 
     public Inteligente(String nombre, Float consumo, int nroSerial, byte macAddress, Estado estado)
     {
@@ -20,15 +18,15 @@ public class Inteligente extends Dispositivo {
         this.macAddress = macAddress;
         this.estado = estado;
     }
-    public Estado ultimoLista() {return listaEstados.get(listaEstados.size() - 1);}
+    public HistorialConsumo ultimoLista() {return historialConsumo.get(historialConsumo.size() - 1);}
 
     public void cambiarEstado(Estado nuevoEstado)
     {
         this.estado = nuevoEstado;
-        if(estado != ultimoLista() || listaEstados.isEmpty())
+        if(estado != ultimoLista().getEstadoActual() || historialConsumo.isEmpty())
         {
-            listaEstados.add(nuevoEstado);
-            listaFechas.add(new DateTime());
+            HistorialConsumo nuevoCambio = new HistorialConsumo(estado,new DateTime());
+            historialConsumo.add(nuevoCambio);
         }
     }
 
@@ -56,10 +54,18 @@ public class Inteligente extends Dispositivo {
 
     // public float getConsumoPorHoras(int cantidadHoras)
 
-    // public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)  // Problema para obtener fechas y compararlas
+    public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)  // Problema para obtener fechas y compararlas
+    {
+        List<HistorialConsumo> listaAux;
+        listaAux = historialConsumo.stream().filter(unCambioHistorial -> betweenPeriodo(unCambioHistorial.getFechaEstado(),fechaInicio,fechaFin)).collect(Collectors.toList());;
+       return listaAux.stream().mapToDouble(unCambioHistorial -> (unCambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo())).sum();
+    }
 
+    public Boolean betweenPeriodo (DateTime fechaEstado,DateTime fechaInicio,DateTime fechaFin)
+    {
+        return fechaInicio.isBefore(fechaEstado) && fechaEstado.isBefore(fechaFin);
+    }
 
     public Boolean esInt() {return true;}
     public int puntos() {return 15;}
-
 }
