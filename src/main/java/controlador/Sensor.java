@@ -16,7 +16,7 @@ public class Sensor implements SensorSubject {
     }
 
     public void medicion(BigDecimal unValor){
-        this.notificar(unValor);
+        this.notify(unValor);
     }
 
     public void notify(BigDecimal unValor) {
