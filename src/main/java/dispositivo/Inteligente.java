@@ -53,7 +53,7 @@ public class Inteligente extends Dispositivo {
     // Metodos para calcular el consumo
 
 
-    public double getConsumoPorHoras(int cantidadHoras)
+    public double getConsumoPorHoras(int cantidadHoras)             //Cuanto consumio en las ultimas horas
     {
         return consumoPeriodo(obtenerFechaAnterior(cantidadHoras),new DateTime());
     }
@@ -62,14 +62,14 @@ public class Inteligente extends Dispositivo {
         return new DateTime().plusHours(-cantHoras);
     }
 
-    public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)
+    public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)       //Consumo comprendido entre dos periodos
     {
         List<HistorialConsumo> listaAux;
         listaAux = historialConsumo.stream().filter(unCambioHistorial -> betweenPeriodo(unCambioHistorial.getFechaEstado(),fechaInicio,fechaFin)).collect(Collectors.toList());
-       return listaAux.stream().mapToDouble(unCambioHistorial -> calculoConsumoCompleto(unCambioHistorial,listaAux)).sum();
+       return listaAux.stream().mapToDouble(unCambioHistorial -> calculoConsumo(unCambioHistorial,listaAux)).sum();
     }
 
-    public double calculoConsumoCompleto(HistorialConsumo cambioHistorial, List<HistorialConsumo> listaCambiosHistorial)
+    public double calculoConsumo(HistorialConsumo cambioHistorial, List<HistorialConsumo> listaCambiosHistorial)
     {
         return cambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo()*cambioHistorial.tiempoUso(listaCambiosHistorial);
     }

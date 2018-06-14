@@ -27,7 +27,7 @@ public void Update(BigDecimal unValor) {
 }
 
 public boolean cumpleRegla(BigDecimal unValor) {
-    return condiciones.stream().allMatch(condicion -> condicion.cumple(unValor))
+    return condiciones.stream().allMatch(condicion -> condicion.cumple(unValor));
 }
 
 public void actuar(){
