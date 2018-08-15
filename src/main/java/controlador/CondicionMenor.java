@@ -11,7 +11,7 @@ public CondicionMenor (Double valor)    {
 }
 
 public int validacion (Double unValor){
-    this.valorCondicionante.compareTo(unValor);
+    return this.valorCondicionante.compareTo(unValor);
 }
 
 public boolean getEstado() { return estadoCondicion; }
@@ -20,7 +20,8 @@ public void Update(Double unValor)  {
     if (1 == validacion(unValor)) {
 
         this.setEstado(true);
-        Regla.actuar();
+        Regla unaRegla = new Regla();
+        unaRegla.actuar();
     }
     else {
         this.setEstado(false);
