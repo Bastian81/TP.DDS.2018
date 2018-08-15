@@ -1,19 +1,12 @@
 package controlador;
 
-import java.math.BigDecimal;
-
 public interface ConditionObserver {
 
-    public void Update(BigDecimal unValor)  {
-        if (validacion(unValor) = true) {
-            Regla.cumpleRegla(boolean true);
-        }
-        else    {
-            Regla.cumpleRegla(boolean false);
-        }
+    public boolean estadoCondicion = false;
 
-    }
+public void Update(Double unValor);
 
-    public boolean validacion (BigDecimal unValor);
+public int validacion (Double unValor);
 
+public boolean getEstado();
 }

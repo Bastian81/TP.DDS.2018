@@ -1,6 +1,5 @@
 package controlador;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Regla {
@@ -8,22 +7,26 @@ public class Regla {
     ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
     ArrayList<CondicionMayor> condiciones = new ArrayList<CondicionMayor>();
 
-public void agregarCondicion(CondicionMayor condicion) {
+/*public void agregarCondicion(ConditionObserver condicion) {
 
     condiciones.add(condicion);
 }
 
-public void agregarActuador(CondicionMayor condicion) {
+public void agregarActuador(Actuador actuador) {
 
-    actuadores.add(condicion);
-}
+    actuadores.add(actuador);
+}*/
 
-public boolean cumpleRegla(BigDecimal unValor) {
-    return condiciones.stream().allMatch(condicion -> condicion.cumple(unValor));
+public boolean cumpleRegla() {
+
+    return condiciones.stream().allMatch(condicion -> condicion.getEstado());
 }
 
 public void actuar(){
 
-    actuadores.stream().forEach(actuador -> actuador.actuar());
+    if(this.cumpleRegla()) {
+
+        actuadores.stream().forEach(actuador -> actuador.actuar());
+    }
 }
 }

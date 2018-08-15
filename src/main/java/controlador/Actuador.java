@@ -11,6 +11,8 @@ public Actuador(Inteligente unDispositivo) {
     dispositivo = unDispositivo;
 }
 
-public void actuar(){}
+public void actuar(){
+    System.out.println ("funciona");
+}
 
 }

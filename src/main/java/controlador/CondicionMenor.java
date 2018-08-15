@@ -1,10 +1,10 @@
 package controlador;
 
-public class CondicionMayor implements ConditionObserver {
+public class CondicionMenor implements ConditionObserver {
 
     private Double valorCondicionante;
 
-public CondicionMayor (Double valor)    {
+public CondicionMenor (Double valor)    {
 
     this.valorCondicionante = valor;
 }
@@ -16,7 +16,7 @@ public int validacion (Double unValor){
 public boolean getEstado() { return estadoCondicion; }
 
 public void Update(Double unValor)  {
-    if (validacion(unValor) = -1) {
+    if (validacion(unValor) = 1) {
 
         this.estadoCondicion = true;
         Regla.actuar();

@@ -1,9 +1,10 @@
 package controlador;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Sensor implements SensorSubject {
+
+    public Double valorTomado = 0;
 
     private ArrayList<ConditionObserver> observadores = new ArrayList<ConditionObserver>();
 
@@ -15,11 +16,13 @@ public class Sensor implements SensorSubject {
         observadores.remove(observador);
     }
 
-    public void medicion(BigDecimal unValor){
+    public void medicion(Double unValor){
+
+        valorTomado = unValor;
         this.notify(unValor);
     }
 
-    public void notify(BigDecimal unValor) {
+    public void notify(Double unValor) {
         for (int i = 0; i < observadores.size(); i++){
             observadores.get(i).Update(unValor);
         }
