@@ -1,29 +1,21 @@
 package controlador;
 
-import dispositivo.Inteligente;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class Regla implements RuleObserver {
+public class Regla {
 
     ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<Condicion> condiciones = new ArrayList<Condicion>();
+    ArrayList<CondicionMayor> condiciones = new ArrayList<CondicionMayor>();
 
-public void agregarCondicion(Condicion condicion) {
-
-    condiciones.add(condicion);
-}
-
-public void agregarActuador(Condicion condicion) {
+public void agregarCondicion(CondicionMayor condicion) {
 
     condiciones.add(condicion);
 }
 
-public void Update(BigDecimal unValor) {
-    if (this.cumpleRegla(unValor)){
-        this.actuar();
-    }
+public void agregarActuador(CondicionMayor condicion) {
+
+    actuadores.add(condicion);
 }
 
 public boolean cumpleRegla(BigDecimal unValor) {

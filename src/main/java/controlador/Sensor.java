@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Sensor implements SensorSubject {
 
-    private ArrayList<RuleObserver> observadores = new ArrayList<RuleObserver>();
+    private ArrayList<ConditionObserver> observadores = new ArrayList<ConditionObserver>();
 
-    public void attach(RuleObserver observador) {
+    public void attach(ConditionObserver observador) {
         observadores.add(observador);
     }
 
-    public void detach(RuleObserver observador) {
+    public void detach(ConditionObserver observador) {
         observadores.remove(observador);
     }
 

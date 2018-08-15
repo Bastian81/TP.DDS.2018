@@ -2,18 +2,16 @@ package controlador;
 
 import java.math.BigDecimal;
 
-public class Condicion implements ConditionObserver {
+public class CondicionMayor implements ConditionObserver {
 
     private float valorCondicionante;
-    private
 
-public void Update(BigDecimal unValor) {
-    if (this.cumple(unValor)){
-        Regla.cumpleRegla();
-    }
+public CondicionMayor (BigDecimal valor)    {
+
+    this.valorCondicionante = valor;
 }
 
-public boolean cumple(BigDecimal unValor){
-
+public boolean validacion (BigDecimal unValor){
+    unValor > valorCondicionante;
 }
 }
