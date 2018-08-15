@@ -16,13 +16,17 @@ public int validacion (Double unValor){
 public boolean getEstado() { return estadoCondicion; }
 
 public void Update(Double unValor)  {
-    if (validacion(unValor) = 1) {
+    if (1 == validacion(unValor)) {
 
-        this.estadoCondicion = true;
+        this.setEstado(true);
         Regla.actuar();
     }
-    else    {
-        this.estadoCondicion = false;
+    else {
+        this.setEstado(false);
     }
+}
+
+public void setEstado (boolean vof) {
+    this.estadoCondicion = vof;
 }
 }

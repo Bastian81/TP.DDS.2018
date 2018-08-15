@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Regla {
 
-    ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<CondicionMayor> condiciones = new ArrayList<CondicionMayor>();
+    static ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
+    static ArrayList<CondicionMayor> condiciones = new ArrayList<CondicionMayor>();
 
 /*public void agregarCondicion(ConditionObserver condicion) {
 
@@ -17,14 +17,14 @@ public void agregarActuador(Actuador actuador) {
     actuadores.add(actuador);
 }*/
 
-public boolean cumpleRegla() {
+public static boolean cumpleRegla() {
 
     return condiciones.stream().allMatch(condicion -> condicion.getEstado());
 }
 
-public void actuar(){
+public static void actuar(){
 
-    if(this.cumpleRegla()) {
+    if( this.cumpleRegla() ) {
 
         actuadores.stream().forEach(actuador -> actuador.actuar());
     }

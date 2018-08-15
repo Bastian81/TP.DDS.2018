@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sensor implements SensorSubject {
 
-    public Double valorTomado = 0;
+    public Double valorTomado = 0.0;
 
     private ArrayList<ConditionObserver> observadores = new ArrayList<ConditionObserver>();
 

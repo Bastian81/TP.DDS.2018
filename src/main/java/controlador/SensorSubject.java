@@ -6,5 +6,5 @@ public interface SensorSubject {
 
     public void attach(ConditionObserver observador);
     public void detach(ConditionObserver observador);
-    public void notify(BigDecimal unValor);
+    public void notify(Double unValor);
 }
