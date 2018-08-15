@@ -3,6 +3,7 @@ package controlador;
 public class CondicionMenor implements ConditionObserver {
 
     private Double valorCondicionante;
+    boolean estadoCondicion = false;
 
 public CondicionMenor (Double valor)    {
 

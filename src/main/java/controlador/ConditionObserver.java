@@ -2,7 +2,7 @@ package controlador;
 
 public interface ConditionObserver {
 
-    public boolean estadoCondicion = false;
+
 
 public void Update(Double unValor);
 
