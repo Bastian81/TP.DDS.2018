@@ -6,13 +6,13 @@ public class Sensor implements SensorSubject {
 
     public Double valorTomado = 0.0;
 
-    private ArrayList<ConditionObserver> observadores = new ArrayList<ConditionObserver>();
+    private ArrayList<CondicionObserver> observadores = new ArrayList<CondicionObserver>();
 
-    public void attach(ConditionObserver observador) {
+    public void attach(CondicionObserver observador) {
         observadores.add(observador);
     }
 
-    public void detach(ConditionObserver observador) {
+    public void detach(CondicionObserver observador) {
         observadores.remove(observador);
     }
 

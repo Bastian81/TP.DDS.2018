@@ -1,8 +1,6 @@
 package controlador;
 
-public interface ConditionObserver {
-
-public void agregarRegla(Regla unaRegla);
+public interface CondicionObserver {
 
 public void Update(Double unValor);
 

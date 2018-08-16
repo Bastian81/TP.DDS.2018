@@ -5,12 +5,11 @@ import java.util.ArrayList;
 public class Regla {
 
     ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<ConditionObserver> condiciones = new ArrayList<ConditionObserver>();
+    ArrayList<CondicionObserver> condiciones = new ArrayList<CondicionObserver>();
 
-public void agregarCondicion(ConditionObserver condicion) {
+public void agregarCondicion(CondicionObserver condicion) {
 
     condiciones.add(condicion);
-    condicion.agregarRegla(this);
 }
 
 public void agregarActuador(Actuador actuador) {
