@@ -4,10 +4,16 @@ public class CondicionMenor implements ConditionObserver {
 
     private Double valorCondicionante;
     boolean estadoCondicion = false;
+    private Regla miRegla = null;
 
 public CondicionMenor (Double valor)    {
 
     this.valorCondicionante = valor;
+}
+
+public void agregarRegla (Regla unaRegla) {
+
+    miRegla = unaRegla;
 }
 
 public int validacion (Double unValor){

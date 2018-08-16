@@ -4,10 +4,16 @@ public class CondicionMayor implements ConditionObserver {
 
     private Double valorCondicionante;
     boolean estadoCondicion = false;
+    private Regla miRegla = null;
 
 public CondicionMayor (Double valor)    {
 
     this.valorCondicionante = valor;
+}
+
+public void agregarRegla (Regla unaRegla) {
+
+    miRegla = unaRegla;
 }
 
 public int validacion (Double unValor){
@@ -20,8 +26,7 @@ public void Update(Double unValor)  {
     if (-1 == validacion(unValor)) {
 
         this.setEstado(true);
-        Regla unaRegla = new Regla();
-        unaRegla.actuar();
+        miRegla.actuar();
     }
     else    {
         this.setEstado(false);

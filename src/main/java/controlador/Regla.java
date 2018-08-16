@@ -5,17 +5,18 @@ import java.util.ArrayList;
 public class Regla {
 
     ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<CondicionMayor> condiciones = new ArrayList<CondicionMayor>();
+    ArrayList<ConditionObserver> condiciones = new ArrayList<ConditionObserver>();
 
-/*public void agregarCondicion(ConditionObserver condicion) {
+public void agregarCondicion(ConditionObserver condicion) {
 
     condiciones.add(condicion);
+    condicion.agregarRegla(this);
 }
 
 public void agregarActuador(Actuador actuador) {
 
     actuadores.add(actuador);
-}*/
+}
 
 public boolean cumpleRegla() {
 
