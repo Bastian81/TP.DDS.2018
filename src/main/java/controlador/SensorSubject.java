@@ -5,4 +5,5 @@ public interface SensorSubject {
     public void attach(CondicionObserver observador);
     public void detach(CondicionObserver observador);
     public void notify(Double unValor);
+    public void medicion(Double unValor);
 }

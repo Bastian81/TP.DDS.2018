@@ -7,6 +7,10 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import geoposicionamiento.Posicion;
+import geoposicionamiento.Transformador;
+import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 import controlador.Sensor;
 
@@ -26,9 +30,13 @@ public class Cliente extends Usuario
     List<Estandar> dipositivosEstandares;
     DateTime fechaDeAlta;
     List<Sensor> sensores;
+	Posicion posicion;
+	ZonaGeografica miZona;
+	Transformador transformador;
+
 
 		// Constructor
-public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel)
+public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud, ZonaGeografica unaZona)
 {
 	super(nom,ap,nomUsuario,contra);
 	tipoDocumento = tipoDoc;
@@ -38,10 +46,30 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	DateTime alta = new DateTime();
 	this.fechaDeAlta = alta;
 	puntos = 0;
+	double latitud = unaLatitud;
+	double longitud = unaLongitud;
+	posicion = new Posicion(latitud, longitud);
+	miZona = unaZona;
+	miZona.agregarCliente(this);
 }
 
+public Posicion getPosicion() {
+    return posicion;
+}
 
-public int cantDispositivosTotal() 
+public void setTransformador(Transformador unTransformador) {
+    transformador = unTransformador;
+}
+
+public Transformador getTransformador() {
+    return transformador;
+}
+
+public void agregarSensor (Sensor unSensor) {
+    sensores.add(unSensor);
+}
+
+public int cantDispositivosTotal()
 {
 	return dispositivosInteligentes.size() + dipositivosEstandares.size();
 }
@@ -83,7 +111,7 @@ public float consumoMensual()
 public float estimarFacturacion(List<Categoria> categorias){
 		return 	categoria.estimarFacturacionMensual(this);
 	}
-	
+
 public void setCategoria(List<Categoria> categorias)
 {
 	
@@ -131,5 +159,4 @@ public boolean serialRepetida(int serial_nueva)
 }
 	
 }
-
 

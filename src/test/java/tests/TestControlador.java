@@ -36,7 +36,7 @@ public class TestControlador {
 
     }
 
-    public void testApagado
+ //   public void testApagado//
 }
 
 
