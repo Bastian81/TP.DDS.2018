@@ -6,7 +6,7 @@ import dispositivo.Inteligente;
 public class Regla {
 
     ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<CondicionObserver> condiciones = new ArrayList<CondicionObserver>();
+    ArrayList<Condicion> condiciones = new ArrayList<Condicion>();
     Inteligente dispositivo;
 
 public Regla (Inteligente unDispositivo) {
@@ -15,7 +15,7 @@ public Regla (Inteligente unDispositivo) {
 
 }
 
-public void agregarCondicion(CondicionObserver condicion) {
+public void agregarCondicion(Condicion condicion) {
 
     condiciones.add(condicion);
 }

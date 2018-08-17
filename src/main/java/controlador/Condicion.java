@@ -1,19 +1,20 @@
 package controlador;
 
-public class Condicion implements CondicionObserver {
+public class Condicion extends Observer{
 
     private Double valorCondicionante;
+	private Double ultimoValorMedido;
     boolean estadoCondicion = false;
     private Regla miRegla;
     private Integer tipoCondicion;
 
-public Condicion(Double valor, Regla unaRegla, String unTipoCondicion)    {
-
+public Condicion(Double valor, Regla unaRegla, String unTipoCondicion, Sensor sensorAObservar)
+{
+	super(sensorAObservar);
     valorCondicionante = valor;
     miRegla = unaRegla;
     unaRegla.agregarCondicion(this);
     definirTipo(unTipoCondicion);
-
 }
 
 public void definirTipo (String unTipo) {
@@ -49,7 +50,9 @@ public int validacion (Double unValor){
 
 public boolean getEstado() { return estadoCondicion; }
 
-public void Update(Double unValor)  {
+public void Update(void)  {
+	
+	Double unValor = ((Sensor)subject).getValorTomado(void);
 
     if(tipoCondicion == 2) {
 

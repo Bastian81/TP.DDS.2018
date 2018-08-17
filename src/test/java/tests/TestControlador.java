@@ -19,8 +19,8 @@ public class TestControlador {
         Encendido on = new Encendido();
         Inteligente heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
         Regla apagarPorTempYMov = new Regla(heladera);
-        Condicion tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual");
-        Condicion mov0 = new Condicion(0.0, apagarPorTempYMov, "igual");
+        Condicion tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual", sensorTemp);
+        Condicion mov0 = new Condicion(0.0, apagarPorTempYMov, "igual", sensorMov);
         Actuador apagar = new Actuador("apagar");
 
         //adds//
