@@ -4,15 +4,46 @@ import dispositivo.Inteligente;
 
 public class Actuador {
 
-    Inteligente dispositivo;
+    int tipoActuador;
 
-public Actuador(Inteligente unDispositivo) {
+public Actuador(String unTipoActuador) {
 
-    dispositivo = unDispositivo;
+    definirTipo(unTipoActuador);
 }
 
-public void actuar(){
-    System.out.println ("funciona");
+public void definirTipo (String unTipo) {
+
+    switch (unTipo) {
+
+        case "apagar":
+            tipoActuador = 0;
+            break;
+
+        case "encender":
+            tipoActuador = 1;
+            break;
+
+        case "modoAhorro":
+            tipoActuador = -1;
+            break;
+
+    }
+}
+
+public void actuar(Inteligente unDispositivo) {
+
+    if(tipoActuador == 0){
+        unDispositivo.apagar();
+    }
+
+    if(tipoActuador == 1){
+        unDispositivo.apagar();
+    }
+
+    if(tipoActuador == -1){
+        unDispositivo.apagar();
+    }
+
 }
 
 }
