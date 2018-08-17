@@ -2,7 +2,8 @@ package geoposicionamiento;
 
 import general.Cliente;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ZonaGeografica {
 
@@ -26,14 +27,14 @@ public Transformador transformadorCercano (Cliente unCliente) {
 
     int i;
     double max = 0.0;
-    double[] distancias = new double[100];
+    List<Double> distancias = new ArrayList<Double>();
     distancias = distanciaTransformadores(unCliente);
 
 
-    for(i=0; i < distancias.length; i++) {
+    for(i=0; i < distancias.size(); i++) {
 
-        if(distancias[i] >= max) {
-            max = distancias[i];
+        if(distancias.get(i) >= max) {
+            max = distancias.get(i);
         }
     }
     return transformadores.stream()
@@ -48,9 +49,11 @@ public double distanciaTransformador (Cliente unCliente, Transformador unTransfo
 
 }
 
-public double[] distanciaTransformadores (Cliente unCliente) {
+public List<Double> distanciaTransformadores (Cliente unCliente) {
 
-    return transformadores.stream().map(transformador -> distanciaKM(unCliente.getPosicion(), transformador.getPosicion()));
+    return transformadores.stream()
+            .map(transformador -> distanciaKM(unCliente.getPosicion(), transformador.getPosicion()))
+            .collect(Collectors.toList());
 
 }
 
@@ -88,16 +91,16 @@ public void eliminarTransformador(Transformador unTransformador) {
 
 public static double distanciaKM(Posicion casa, Posicion transformador) {
 
-    double radioTierra = 6371.0;//en kilómetros
+    double radioTierra = 6371.0;//en kilómetros//
     double distancia;
     double casaLat;
     double casaLong;
     double tranLat;
     double tranLong;
-    casa.getLatitud() = casaLat;
-    casa.getLongitud() = casaLong;
-    transformador.getLatitud() = tranLat;
-    transformador.getLongitud() = tranLong;
+    casaLat = casa.getLatitud();
+    casaLong = casa.getLongitud();
+    tranLat = transformador.getLatitud();
+    tranLong = transformador.getLongitud();
 
     //diferencias
     double difLat = Math.toRadians(tranLat - casaLat);
