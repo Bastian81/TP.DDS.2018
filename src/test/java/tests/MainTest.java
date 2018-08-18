@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import dispositivo.Dispositivo;
 import dispositivo.Inteligente;
@@ -20,3 +20,4 @@ public class MainTest {
 
 
 }
+*/

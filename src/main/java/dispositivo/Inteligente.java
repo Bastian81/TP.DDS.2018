@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 
@@ -18,13 +19,19 @@ public class Inteligente extends Dispositivo {
         super(nombre,consumo,nroSerial);
         this.macAddress = macAddress;
         this.estado = estado;
+        this.historialConsumo = new ArrayList<HistorialConsumo>();
     }
-    public HistorialConsumo ultimoLista() {return historialConsumo.get(historialConsumo.size() - 1);}
+    public HistorialConsumo ultimoLista() {
+    	if(historialConsumo.isEmpty())
+    		return null;
+    	else
+    		return historialConsumo.get(historialConsumo.size() - 1);
+    }
 
     public void cambiarEstado(Estado nuevoEstado)
     {
         this.estado = nuevoEstado;
-        if(estado != ultimoLista().getEstadoActual() || historialConsumo.isEmpty())
+        if( historialConsumo.isEmpty() || estado != ultimoLista().getEstadoActual())
         {
             HistorialConsumo nuevoCambio = new HistorialConsumo(estado,new DateTime());
             historialConsumo.add(nuevoCambio);

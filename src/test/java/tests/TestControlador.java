@@ -1,27 +1,43 @@
 package tests;
 
+import static org.junit.Assert.*;
+import java.util.List;
+import java.util.function.Predicate;
+import org.junit.Before;
+import org.junit.Test;
+
 import dispositivo.Inteligente;
-import controlador.Actuador;
 import controlador.Condicion;
 import controlador.Regla;
 import controlador.Sensor;
 import estado.Apagado;
 import estado.Encendido;
+import controlador.Actuador;
 
 
 public class TestControlador {
 
-    public static void main(String[] args) {
-
+    Sensor sensorTemp;
+    Sensor sensorMov;
+    Encendido on;
+    Inteligente heladera;
+    Regla apagarPorTempYMov;
+    Condicion tempM20;
+    Condicion mov0;
+    Actuador apagar;
+	
+	@Before
+	public void init()
+	{
         //instancias//
-        Sensor sensorTemp = new Sensor();
-        Sensor sensorMov = new Sensor();
-        Encendido on = new Encendido();
-        Inteligente heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
-        Regla apagarPorTempYMov = new Regla(heladera);
-        Condicion tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual", sensorTemp);
-        Condicion mov0 = new Condicion(0.0, apagarPorTempYMov, "igual", sensorMov);
-        Actuador apagar = new Actuador("apagar");
+        sensorTemp = new Sensor();
+        sensorMov = new Sensor();
+        on = new Encendido();
+        heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
+        apagarPorTempYMov = new Regla(heladera);
+        tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual", sensorTemp);
+        mov0 = new Condicion(0.0, apagarPorTempYMov, "igual", sensorMov);
+        apagar = new Actuador("apagar");
 
         //adds//
         sensorTemp.attach(tempM20);
@@ -32,9 +48,18 @@ public class TestControlador {
         sensorTemp.medicion(20.0);
         sensorTemp.medicion(16.0);
         sensorMov.medicion(0.0);
-
-
-    }
+	}
+	
+	@Test
+	public void test1(){
+		assertTrue(heladera.estaEncendido());
+	}
+	
+	@Test
+	public void test2() {
+		sensorTemp.medicion(30.0);
+		assertFalse(heladera.estaEncendido());
+	}
 
  //   public void testApagado//
 }

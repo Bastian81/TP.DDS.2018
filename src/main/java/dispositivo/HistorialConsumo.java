@@ -1,6 +1,5 @@
 package dispositivo;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import estado.Estado;
 
 import org.joda.time.DateTime;
