@@ -1,4 +1,5 @@
 package controlador;
+import java.util.ArrayList;
 
 public abstract class Subject
 {	
@@ -13,9 +14,9 @@ public abstract class Subject
 		observadores.remove(observador);
 	}
 	
-	public void notify(void)
+	public void notifyObservers()
 	{
         for (int i = 0; i < observadores.size(); i++)
-            observadores.get(i).Update(void);
+            observadores.get(i).Update();
     }
 }

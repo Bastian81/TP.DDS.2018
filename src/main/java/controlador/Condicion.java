@@ -3,7 +3,6 @@ package controlador;
 public class Condicion extends Observer{
 
     private Double valorCondicionante;
-	private Double ultimoValorMedido;
     boolean estadoCondicion = false;
     private Regla miRegla;
     private Integer tipoCondicion;
@@ -50,9 +49,9 @@ public int validacion (Double unValor){
 
 public boolean getEstado() { return estadoCondicion; }
 
-public void Update(void)  {
+public void Update()  {
 	
-	Double unValor = ((Sensor)subject).getValorTomado(void);
+	Double unValor = ((Sensor)subject).getValorTomado();
 
     if(tipoCondicion == 2) {
 

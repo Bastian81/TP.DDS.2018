@@ -9,5 +9,5 @@ public abstract class Observer
 		subject = sujetoAObservar;
 	}
 	
-	public abstract void Update(void);
+	public abstract void Update();
 }

@@ -1,12 +1,10 @@
 package controlador;
 
-import java.util.ArrayList;
-
 public class Sensor extends Subject {
 
     public Double valorTomado = 0.0;
 	
-	public Double getValorTomado(void)
+	public Double getValorTomado()
 	{
 		return valorTomado;
 	}
@@ -14,7 +12,7 @@ public class Sensor extends Subject {
     public void medicion(Double unValor){
 
         valorTomado = unValor;
-        this.notify(void);
+        this.notifyObservers();
     }
 }
 

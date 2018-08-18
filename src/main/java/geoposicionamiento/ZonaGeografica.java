@@ -27,6 +27,7 @@ public Transformador transformadorCercano (Cliente unCliente) {
 
     int i;
     double max = 0.0;
+    final double finalMax;
     List<Double> distancias = new ArrayList<Double>();
     distancias = distanciaTransformadores(unCliente);
 
@@ -37,8 +38,10 @@ public Transformador transformadorCercano (Cliente unCliente) {
             max = distancias.get(i);
         }
     }
+    
+    finalMax = max;
     return transformadores.stream()
-                        .filter(transformador -> this.distanciaTransformador(unCliente, transformador) == max)
+                        .filter(transformador -> this.distanciaTransformador(unCliente, transformador) == finalMax)
                         .findFirst()
                         .get();
 }
