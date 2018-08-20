@@ -17,7 +17,6 @@ import controlador.Sensor;
 
 import org.joda.time.DateTime;
 
-
 public class Cliente extends Usuario
 {
     int puntos;
@@ -31,6 +30,7 @@ public class Cliente extends Usuario
     DateTime fechaDeAlta;
     List<Sensor> sensores;
 	Posicion posicion;
+	SimplexManager simplexManager;
 
 
 		// Constructor
@@ -47,6 +47,13 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	double latitud = unaLatitud;
 	double longitud = unaLongitud;
 	posicion = new Posicion(latitud, longitud);
+	simplexManager = new SimplexManager();
+}
+
+public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
+{
+	simplexManager.procesarDispositivos(disps);
+	return simplexManager.getHorasRecomendadas(disps, disp);
 }
 
 public Posicion getPosicion() {
