@@ -1,8 +1,6 @@
 package tests;
 
 import static org.junit.Assert.*;
-import java.util.List;
-import java.util.function.Predicate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,9 +8,8 @@ import dispositivo.Inteligente;
 import controlador.Condicion;
 import controlador.Regla;
 import controlador.Sensor;
-import estado.Apagado;
-import estado.Encendido;
-import controlador.Actuador;
+import estado.*;
+import actuador.*;
 
 
 public class TestControlador {
@@ -37,7 +34,7 @@ public class TestControlador {
         apagarPorTempYMov = new Regla(heladera);
         tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual", sensorTemp);
         mov0 = new Condicion(0.0, apagarPorTempYMov, "igual", sensorMov);
-        apagar = new Actuador("apagar");
+        apagar = new ApagarDisp();
 
         //adds//
         sensorTemp.attach(tempM20);

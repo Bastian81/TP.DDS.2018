@@ -1,7 +1,9 @@
 package controlador;
 
+
 import java.util.ArrayList;
 import dispositivo.Inteligente;
+import actuador.Actuador;
 
 public class Regla {
 
