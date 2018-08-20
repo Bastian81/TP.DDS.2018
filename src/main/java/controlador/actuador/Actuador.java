@@ -1,4 +1,4 @@
-package actuador;
+package controlador.actuador;
 
 import dispositivo.Inteligente;
 

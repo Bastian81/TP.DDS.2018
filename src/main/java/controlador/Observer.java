@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.Subject;
+
 public abstract class Observer
 {
 	public Subject subject;

@@ -2,8 +2,10 @@ package controlador;
 
 
 import java.util.ArrayList;
+
+import controlador.condicion.Condicion;
 import dispositivo.Inteligente;
-import actuador.Actuador;
+import controlador.actuador.Actuador;
 
 public class Regla {
 

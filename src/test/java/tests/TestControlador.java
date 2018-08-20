@@ -1,15 +1,18 @@
 package tests;
 
 import static org.junit.Assert.*;
+
+import controlador.condicion.Igual;
+import controlador.condicion.Mayor;
 import org.junit.Before;
 import org.junit.Test;
 
 import dispositivo.Inteligente;
-import controlador.Condicion;
+import controlador.condicion.Condicion;
 import controlador.Regla;
 import controlador.Sensor;
 import estado.*;
-import actuador.*;
+import controlador.actuador.*;
 
 
 public class TestControlador {
@@ -17,6 +20,7 @@ public class TestControlador {
     Sensor sensorTemp;
     Sensor sensorMov;
     Encendido on;
+    Apagado off;
     Inteligente heladera;
     Regla apagarPorTempYMov;
     Condicion tempM20;
@@ -30,10 +34,11 @@ public class TestControlador {
         sensorTemp = new Sensor();
         sensorMov = new Sensor();
         on = new Encendido();
+        off = new Apagado();
         heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
         apagarPorTempYMov = new Regla(heladera);
-        tempM20 = new Condicion(20.0, apagarPorTempYMov, "mayorIgual", sensorTemp);
-        mov0 = new Condicion(0.0, apagarPorTempYMov, "igual", sensorMov);
+        tempM20 = new Mayor(19.0, apagarPorTempYMov, sensorTemp);
+        mov0 = new Igual(0.0, apagarPorTempYMov, sensorMov);
         apagar = new ApagarDisp();
 
         //adds//
@@ -45,6 +50,7 @@ public class TestControlador {
         sensorTemp.medicion(20.0);
         sensorTemp.medicion(16.0);
         sensorMov.medicion(0.0);
+
 	}
 	
 	@Test
