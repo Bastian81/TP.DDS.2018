@@ -13,11 +13,13 @@ import dispositivo.Inteligente;
 
 public class SimplexManager extends SimplexFacade{
 	
+	boolean ahorroAutomatico;
 	PointValuePair solucion;
 	
 	public SimplexManager()
 	{
 		super(GoalType.MAXIMIZE, true);
+		ahorroAutomatico = false;
 	}
 	
 	public void procesarDispositivos(List<Inteligente> dispositivos)
@@ -31,6 +33,18 @@ public class SimplexManager extends SimplexFacade{
 		crearFuncionEconomica(primConsumosHs);
 		//agregar restricciones de tabla cargada via JSON
 		solucion = resolver();
+		
+		if(ahorroAutomatico)
+		{
+			int i;
+			for(i = 0; i < dispositivos.size(); i++)
+			{
+				Inteligente disp = dispositivos.get(i);
+				double horas = disp.getUsoTotalDelMesActualEnHoras();
+				if(horas > solucion.getPoint()[i])
+					disp.apagar();
+			}
+		}
 	}
 	
 	public double getHorasRecomendadas(List<Inteligente> dispositivos, Dispositivo disp)
