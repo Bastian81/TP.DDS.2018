@@ -55,8 +55,7 @@ public class Inteligente extends Dispositivo {
     }
     public Boolean estaEncendido() {return estado.estaEncendido();}
 
-
-
+    
     // Metodos para calcular el consumo
 
 
@@ -79,6 +78,19 @@ public class Inteligente extends Dispositivo {
     public double calculoConsumo(HistorialConsumo cambioHistorial, List<HistorialConsumo> listaCambiosHistorial)
     {
         return cambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo()*cambioHistorial.tiempoUso(listaCambiosHistorial);
+    }
+    
+    public double getConsumoTotalDelMesActual()
+    {
+    	DateTime hoy = new DateTime();
+    	DateTime primerDiaDelMes = new DateTime(hoy.year().get(), hoy.monthOfYear().get(), 1, 0, 0);
+    	
+    	return consumoPeriodo(primerDiaDelMes, hoy);
+    }
+    
+    public double getUsoTotalDelMesActualEnHoras()
+    {
+    	return historialConsumo.get(0).tiempoUso(historialConsumo);
     }
 
 
