@@ -3,6 +3,7 @@ package geoposicionamiento;
 import general.Cliente;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transformador {
 
@@ -17,10 +18,16 @@ public Transformador (double unaLatitud, double unaLongitud) {
 
 }
 
+public Posicion getPosicion () {
+        return posicion;
+    }
+public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
 public void agregarCliente (Cliente unCliente) {
 
     clientes.add(unCliente);
-    unCliente.setTransformador(this);
 
 }
 
@@ -31,17 +38,7 @@ public void vaciarTransformador() {
 }
 
 public void eliminarCliente (Cliente unCliente) {
-
-
-
-}
-
-public Posicion getPosicion () {
-    return posicion;
-}
-
-public ArrayList<Cliente> getClientes() {
-    return clientes;
+    clientes.remove(unCliente);
 }
 
 }

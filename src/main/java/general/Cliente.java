@@ -31,12 +31,10 @@ public class Cliente extends Usuario
     DateTime fechaDeAlta;
     List<Sensor> sensores;
 	Posicion posicion;
-	ZonaGeografica miZona;
-	Transformador transformador;
 
 
 		// Constructor
-public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud, ZonaGeografica unaZona)
+public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)
 {
 	super(nom,ap,nomUsuario,contra);
 	tipoDocumento = tipoDoc;
@@ -49,21 +47,12 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	double latitud = unaLatitud;
 	double longitud = unaLongitud;
 	posicion = new Posicion(latitud, longitud);
-	miZona = unaZona;
-	miZona.agregarCliente(this);
 }
 
 public Posicion getPosicion() {
     return posicion;
 }
 
-public void setTransformador(Transformador unTransformador) {
-    transformador = unTransformador;
-}
-
-public Transformador getTransformador() {
-    return transformador;
-}
 
 public void agregarSensor (Sensor unSensor) {
     sensores.add(unSensor);
@@ -157,6 +146,21 @@ public boolean serialRepetida(int serial_nueva)
 {
         return dispositivosInteligentes.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva)); //No me importa si es estandar ya que no da puntos
 }
+
+
+	// Metodo para asignar un transformador a un cliente.
+	public void asignarTransformador(List<ZonaGeografica> listaZonas)
+	{
+		for(ZonaGeografica zonaG : listaZonas)
+		{
+
+			if(zonaG.pertenece(this))
+			{
+				zonaG.asignarTransformador(this);
+			}
+		}
+
+	}
 	
 }
 

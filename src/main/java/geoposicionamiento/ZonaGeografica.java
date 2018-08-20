@@ -5,94 +5,78 @@ import general.Cliente;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class ZonaGeografica {
 
-    ArrayList<Transformador> transformadores = new ArrayList<Transformador>();
-    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    Posicion posicionZona;
+    double radioZona;
+    ArrayList<Transformador> transformadores = new ArrayList<>();
 
-public void agregarCliente (Cliente unCliente) {
 
-    clientes.add(unCliente);
-    this.asignarTransformador(unCliente);
+    public Posicion getPosicion() {return posicionZona;}
+    public double radioZona() {return radioZona;}
+    public List<Transformador> transformadores() {return transformadores;}
 
+    //Metodo para saber si un cliente pertenece a una zona geografica
+public Boolean pertenece(Cliente unCliente)
+{
+        // Un cliente pertenece a una zona si la distancia de su posicion al centro de la zona es menor al radio de la zona.
+        double distanciaZonaCasa;
+        distanciaZonaCasa = this.distanciaKM(unCliente.getPosicion(),this.getPosicion());
+        if(distanciaZonaCasa <= this.radioZona())
+        {
+            return true;
+        }
+        return false;
 }
 
-public void asignarTransformador (Cliente unCliente) {
+public void asignarTransformador (Cliente unCliente)
+{
+    // Asigna a un cliente el transformador mas cercano
 
-    transformadorCercano(unCliente).agregarCliente(unCliente);
+    ArrayList<Double> aux = new ArrayList<>(); // En aux se guardan todas las distancias entre Cliente-Transformadores
 
-}
+    for(Transformador transformador: transformadores)
+    {
+        aux.add(this.distanciaKM(transformador.getPosicion(), unCliente.getPosicion()));
+    }
 
-public Transformador transformadorCercano (Cliente unCliente) {
+    Collections.sort(aux);
 
-    int i;
-    double max = 0.0;
-    final double finalMax;
-    List<Double> distancias = new ArrayList<Double>();
-    distancias = distanciaTransformadores(unCliente);
-
-
-    for(i=0; i < distancias.size(); i++) {
-
-        if(distancias.get(i) >= max) {
-            max = distancias.get(i);
+    for(Transformador transformador: transformadores)
+        {
+        if( this.distanciaKM(transformador.getPosicion(), unCliente.getPosicion()) == aux.get(0) )
+            {
+                transformador.agregarCliente(unCliente);
+            }
         }
     }
-    
-    finalMax = max;
-    return transformadores.stream()
-                        .filter(transformador -> this.distanciaTransformador(unCliente, transformador) == finalMax)
-                        .findFirst()
-                        .get();
-}
 
-public double distanciaTransformador (Cliente unCliente, Transformador unTransformador) {
-
-    return distanciaKM(unCliente.getPosicion(), unTransformador.getPosicion());
-
-}
-
-public List<Double> distanciaTransformadores (Cliente unCliente) {
-
-    return transformadores.stream()
-            .map(transformador -> distanciaKM(unCliente.getPosicion(), transformador.getPosicion()))
-            .collect(Collectors.toList());
+public void agregarTransformador (Transformador transformador)
+{
+        this.transformadores().add(transformador);
+        for(Transformador transformador1: this.transformadores()) //Se deben actualizar los clientes de c/transformador
+        {
+            for(Cliente cliente: transformador1.getClientes()) //Reubica TODOS los clientes
+            {
+                this.asignarTransformador(cliente);
+            }
+        }
 
 }
 
-public void eliminarCliente (Cliente unCliente) {
-
-    unCliente.getTransformador().eliminarCliente(unCliente);
-
+public void eliminarTransformador(Transformador unTransformador)
+{
+    this.transformadores().remove(unTransformador);
+    ArrayList<Cliente> clientesAux = new ArrayList<>();
+    for(Cliente cliente: unTransformador.getClientes())
+    {
+        this.asignarTransformador(cliente); // Asigna un nuevo transformador a cada cliente
+    }
 }
 
-public void agregarTransformador (Transformador transformador) {
-
-    transformadores.add(transformador);
-    this.actualizarAsignacion();
-
-}
-
-public void actualizarAsignacion() {
-
-    this.vaciarTransformadores();
-    clientes.forEach(cliente -> this.asignarTransformador(cliente));
-
-}
-
-public void vaciarTransformadores() {
-
-    transformadores.forEach(transformador -> transformador.vaciarTransformador());
-
-}
-
-public void eliminarTransformador(Transformador unTransformador) {
-
-
-
-}
-
-public static double distanciaKM(Posicion casa, Posicion transformador) {
+public static double distanciaKM(Posicion a, Posicion b)
+{
 
     double radioTierra = 6371.0;//en kilómetros//
     double distancia;
@@ -100,10 +84,10 @@ public static double distanciaKM(Posicion casa, Posicion transformador) {
     double casaLong;
     double tranLat;
     double tranLong;
-    casaLat = casa.getLatitud();
-    casaLong = casa.getLongitud();
-    tranLat = transformador.getLatitud();
-    tranLong = transformador.getLongitud();
+    casaLat = a.getLatitud();
+    casaLong = a.getLongitud();
+    tranLat = b.getLatitud();
+    tranLong = b.getLongitud();
 
     //diferencias
     double difLat = Math.toRadians(tranLat - casaLat);
@@ -129,3 +113,74 @@ public static double distanciaKM(Posicion casa, Posicion transformador) {
 }
 
 }
+
+
+
+
+
+
+/* CODIGO VIEJO
+public void actualizarAsignacion()
+{
+
+    this.vaciarTransformadores();
+    clientes.forEach(cliente -> this.asignarTransformador(cliente));
+
+}
+/*
+
+ */
+/*
+public void asignarTransformador (Cliente unCliente) {
+
+    transformadorCercano(unCliente).agregarCliente(unCliente);
+
+}
+
+public void vaciarTransformadores()
+{
+
+        for (Transformador transformador: this.transformadores())
+        {
+            transformador.vaciarTransformador();
+        }
+
+    }
+
+public Transformador transformadorCercano (Cliente unCliente) {
+
+    int i;
+    double max = 0.0;
+    final double finalMax;
+    List<Double> distancias = new ArrayList<Double>();
+    distancias = distanciaTransformadores(unCliente);
+
+
+    for(i=0; i < distancias.size(); i++) {
+
+        if(distancias.get(i) >= max) {
+            max = distancias.get(i);
+        }
+    }
+
+    finalMax = max;
+    return transformadores.stream()
+                        .filter(transformador -> this.distanciaTransformador(unCliente, transformador) == finalMax)
+                        .findFirst()
+                        .get();
+}
+
+public double distanciaTransformador (Cliente unCliente, Transformador unTransformador) {
+
+    return distanciaKM(unCliente.getPosicion(), unTransformador.getPosicion());
+
+}
+
+public List<Double> distanciaTransformadores (Cliente unCliente) {
+
+    return transformadores.stream()
+            .map(transformador -> distanciaKM(unCliente.getPosicion(), transformador.getPosicion()))
+            .collect(Collectors.toList());
+
+}
+*/
