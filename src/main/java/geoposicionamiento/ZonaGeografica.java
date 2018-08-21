@@ -52,14 +52,28 @@ public void asignarTransformador (Cliente unCliente)
         }
     }
 
+    public boolean existeOtroMasCercano(Posicion casaCliente, Posicion transformadorActual)
+    {
+        double distanciaActual = this.distanciaKM(casaCliente,transformadorActual);
+
+
+        if(this.transformadores().stream().anyMatch(t -> ((this.distanciaKM(t.getPosicion(),casaCliente)) < distanciaActual))) {
+            return true;
+        }
+        return false;
+    }
 public void agregarTransformador (Transformador transformador)
 {
         this.transformadores().add(transformador);
         for(Transformador transformador1: this.transformadores()) //Se deben actualizar los clientes de c/transformador
         {
-            for(Cliente cliente: transformador1.getClientes()) //Reubica TODOS los clientes
+            for(Cliente cliente: transformador1.getClientes())
             {
-                this.asignarTransformador(cliente);
+                if(this.existeOtroMasCercano(cliente.getPosicion(),transformador1.getPosicion())) //Si hay un T mas cercano
+                {
+                    transformador1.getClientes().remove(cliente); //elimina al cliente de T
+                    this.asignarTransformador(cliente);           //Reasignalo
+                }
             }
         }
 
@@ -110,6 +124,16 @@ public static double distanciaKM(Posicion a, Posicion b)
     distancia = radioTierra * var2;
 
     return distancia;
+}
+
+public double getConsumo()
+{
+    double aux = 0;
+    for(Transformador transformador : this.transformadores())
+    {
+        aux += transformador.getConsumo();
+    }
+    return aux;
 }
 
 }

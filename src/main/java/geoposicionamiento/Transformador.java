@@ -41,4 +41,16 @@ public void eliminarCliente (Cliente unCliente) {
     clientes.remove(unCliente);
 }
 
+public double getConsumo()
+{
+    double aux = 0;
+    for(Cliente cliente : this.getClientes())
+    {
+        aux += cliente.consumoMensual();
+    }
+    return aux;
+
+    //buscar alternativa:  return this.getClientes().sumAll({cliente -> cliente.getConsumo()});
+}
+
 }
