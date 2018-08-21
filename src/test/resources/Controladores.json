@@ -1,10 +1,44 @@
-{
-      "sensores": [
+/*{
+      "mayores": [
           {
+                "valorCondicionante": 20;
+                "miRegla": [
+                  {
+                        "inteligente": [
+                          {
+                            "nombre": "heladera",
+                            "consumo": 5.67f,
+                            "nroSerial": 1,
+                            "macAddress": (byte)1,
+                            "estado": on
+                          }
+                        ]
+                  }
+                ],
+                "sensor"
+          },
+      ],
+      "menores": [
+        {
+          "valorCondicionante": 3;
+          "miRegla": [
+            {
+              "inteligente": [
+                {
+                  "nombre": "heladera",
+                  "consumo": 5.67f,
+                  "nroSerial": 1,
+                  "macAddress": (byte)1,
+                  "estado": on
+                }
+              ]
+            }
+          ],
+          "sensor"
+        },
 
-          }
 
-      ]
+      ],
 
 
-}
+}*/
