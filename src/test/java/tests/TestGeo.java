@@ -95,7 +95,7 @@ public class TestGeo {
 
     /*@Test
     public void test4(){
-        assertEquals(5.67f, t1.getConsumo(), 0.001);
+        assertEquals(5.67f, t1.getConsumo(), 0.00f);
     }*/
 }
 /*
