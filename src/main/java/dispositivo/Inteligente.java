@@ -80,14 +80,6 @@ public class Inteligente extends Dispositivo {
         return cambioHistorial.getEstadoActual().porcentajeAhorroConsumo()*this.getConsumo()*cambioHistorial.tiempoUso(listaCambiosHistorial);
     }
     
-    public double getConsumoTotalDelMesActual()
-    {
-    	DateTime hoy = new DateTime();
-    	DateTime primerDiaDelMes = new DateTime(hoy.year().get(), hoy.monthOfYear().get(), 1, 0, 0);
-    	
-    	return consumoPeriodo(primerDiaDelMes, hoy);
-    }
-    
     public double getUsoTotalDelMesActualEnHoras()
     {
     	return historialConsumo.get(0).tiempoUso(historialConsumo);

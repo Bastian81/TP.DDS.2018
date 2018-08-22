@@ -3,6 +3,7 @@ import dispositivo.Dispositivo;
 import dispositivo.Inteligente;
 import dispositivo.Estandar;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -25,10 +26,10 @@ public class Cliente extends Usuario
     int telefonoContacto;
     String domicilio;
     Categoria categoria;
-    List<Inteligente> dispositivosInteligentes;
-    List<Estandar> dipositivosEstandares;
+    ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
+    ArrayList<Estandar> dipositivosEstandares;
     DateTime fechaDeAlta;
-    List<Sensor> sensores;
+    ArrayList<Sensor> sensores;
 	Posicion posicion;
 	SimplexManager simplexManager;
 
@@ -104,8 +105,9 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	{
 
 		dispositivosInteligentes.add(nuevoDispositivo);
-		if(!serialRepetida(nuevoDispositivo.nroSerial()))
+		if(!serialRepetida(nuevoDispositivo.nroSerial())) {
 			puntos += nuevoDispositivo.puntos();
+		}
 	}
 
 	public void agregarEstandar(Estandar nuevoDispositivo)

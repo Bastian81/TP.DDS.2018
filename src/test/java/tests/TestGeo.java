@@ -66,9 +66,9 @@ public class TestGeo {
 
         c1.agregarInteligente(heladera);
 
-        t1.asignarZona(zonasTest);
-        t2.asignarZona(zonasTest);
-        t3.asignarZona(zonasTest);
+        almagroNorte.agregarTransformador(t1);
+        almagroNorte.agregarTransformador(t2);
+        villaCrespo.agregarTransformador(t3);
 
         c1.asignarTransformador(zonasTest);
         c2.asignarTransformador(zonasTest);
@@ -93,10 +93,10 @@ public class TestGeo {
         assertEquals(c2, t3.getClientes().get(0));
     }
 
-    /*@Test
+    @Test
     public void test4(){
         assertEquals(5.67f, t1.getConsumo(), 0.00f);
-    }*/
+    }
 }
 /*
 c2 esta:

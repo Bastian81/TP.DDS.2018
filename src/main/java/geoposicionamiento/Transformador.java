@@ -53,16 +53,4 @@ public double getConsumo()
     //buscar alternativa:  return this.getClientes().sumAll({cliente -> cliente.getConsumo()});
 }
 
-public void asignarZona(List<ZonaGeografica> listaZonas)
-{
-    for(ZonaGeografica zonaG : listaZonas)
-    {
-
-        if(zonaG.transformadorPertenece(this))
-        {
-            zonaG.agregarTransformador(this);
-        }
-    }
-}
-
 }

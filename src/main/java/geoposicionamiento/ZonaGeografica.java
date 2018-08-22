@@ -39,18 +39,6 @@ public Boolean clientePertenece(Cliente unCliente)
     return false;
 }
 
-public Boolean transformadorPertenece(Transformador unTransformador)
-{
-    // Un cliente pertenece a una zona si la distancia de su posicion al centro de la zona es menor al radio de la zona.
-    double distanciaZonaCasa;
-    distanciaZonaCasa = this.distanciaKM(unTransformador.getPosicion(),this.getPosicion());
-    if(distanciaZonaCasa <= this.radioZona())
-    {
-        return true;
-    }
-    return false;
-}
-
 public void asignarTransformador (Cliente unCliente)
 {
     // Asigna a un cliente el transformador mas cercano
