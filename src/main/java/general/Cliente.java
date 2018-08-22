@@ -173,7 +173,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 		for(ZonaGeografica zonaG : listaZonas)
 		{
 
-			if(zonaG.pertenece(this))
+			if(zonaG.clientePertenece(this))
 			{
 				zonaG.asignarTransformador(this);
 			}

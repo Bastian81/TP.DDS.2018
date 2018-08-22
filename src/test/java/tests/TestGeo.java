@@ -1,10 +1,19 @@
 package tests;
 
+import dispositivo.Inteligente;
+import estado.Encendido;
+import estado.Estado;
 import general.Cliente;
 import geoposicionamiento.Transformador;
 import geoposicionamiento.ZonaGeografica;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestGeo {
 
@@ -15,12 +24,16 @@ public class TestGeo {
     Transformador t3; //villaCrespo//
     ZonaGeografica almagroNorte;
     ZonaGeografica villaCrespo;
+    ArrayList<ZonaGeografica> zonasTest;
+    Inteligente heladera;
+    Encendido on;
 
 
     @Before
-    public void mainTest (String[] args)
+    public void init ()
     {
         //Instancias//
+        //Clientes//
         c1 = new Cliente("Gladys", "Marks",
                 "Trevino","Orr",
                 "Calle 1","DNI",
@@ -32,14 +45,58 @@ public class TestGeo {
                 124,124,
                 -34.602509, -58.431686);
 
+        //transformadores//
         t1 = new Transformador(-34.598373, -58.419975);
         t2 = new Transformador(-34.600626, -58.425201);
         t3 = new Transformador(-34.598071, -58.456212);
 
+        //zonas//
+        zonasTest = new ArrayList<ZonaGeografica>();
         almagroNorte = new ZonaGeografica(-34.604305, -58.421896, 0.9);
         villaCrespo = new ZonaGeografica(-34.599449, -58.444196, 1.21);
+
+        //dispositivos//
+        heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
+
+
+
+        //Acciones//
+        zonasTest.add(almagroNorte);
+        zonasTest.add(villaCrespo);
+
+        c1.agregarInteligente(heladera);
+
+        t1.asignarZona(zonasTest);
+        t2.asignarZona(zonasTest);
+        t3.asignarZona(zonasTest);
+
+        c1.asignarTransformador(zonasTest);
+        c2.asignarTransformador(zonasTest);
 }
 
+    @Test
+    public void test1(){
+        assertEquals(2, almagroNorte.transformadores().size());
+        assertEquals(1, villaCrespo.transformadores().size());
+    }
+
+    @Test
+    public void test2(){
+        assertEquals(1, t1.getClientes().size());
+        assertEquals(0, t2.getClientes().size());
+        assertEquals(1, t3.getClientes().size());
+    }
+
+    @Test
+    public void test3(){
+        assertEquals(c1, t1.getClientes().get(0));
+        assertEquals(c2, t3.getClientes().get(0));
+    }
+
+    /*@Test
+    public void test4(){
+        assertEquals(5.67f, t1.getConsumo(), 0.001);
+    }*/
 }
 /*
 c2 esta:
