@@ -24,11 +24,7 @@ public class DatosJSON {
 		return administradores;
 	}
 
-	public void categorizarClientes() {
 
-		clientes.forEach(cliente->cliente.setCategoria(categorias));		   
-		
-	}
 
 
 

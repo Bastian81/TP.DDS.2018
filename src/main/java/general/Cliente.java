@@ -53,7 +53,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 
 //SIMPLEX//
 
-	public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
+		public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
 	{
 		simplexManager.procesarDispositivos(disps);
 		return simplexManager.getHorasRecomendadas(disps, disp);

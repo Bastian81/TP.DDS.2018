@@ -1,4 +1,4 @@
-/*package tests;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -31,8 +31,10 @@ public class TestCliente {
 		
 		clientes = datosJson.getClientes();
 		categorias = datosJson.getCategorias();
-		
-	}
+        clientes.forEach(cliente->cliente.setCategoria(categorias));
+
+
+    }
 	
 	
 	@Test
@@ -104,6 +106,5 @@ public class TestCliente {
 		else
 			return (float) 0;
 	}
-	
 
-}*/
+}
