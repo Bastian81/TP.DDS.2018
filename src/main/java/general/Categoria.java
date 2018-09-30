@@ -1,5 +1,10 @@
 package general;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Categoria {
 
 	 String tipo;
@@ -7,6 +12,10 @@ public class Categoria {
 	 float consumoMensualMax;
 	 float cargoMensualFijo;
 	 float cargoMensualVar;
+
+	 @Id
+	 @GeneratedValue
+	 int id;
 	
 	// constructor
 	
