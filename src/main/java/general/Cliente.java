@@ -3,6 +3,7 @@ import dispositivo.Dispositivo;
 import dispositivo.Inteligente;
 import dispositivo.Estandar;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -25,15 +26,15 @@ public class Cliente extends Usuario
     int telefonoContacto;
     String domicilio;
     Categoria categoria;
-    List<Inteligente> dispositivosInteligentes;
-    List<Estandar> dipositivosEstandares;
+    ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
+    ArrayList<Estandar> dipositivosEstandares;
     DateTime fechaDeAlta;
-    List<Sensor> sensores;
+    ArrayList<Sensor> sensores;
 	Posicion posicion;
 	SimplexManager simplexManager;
 
 
-		// Constructor
+//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)
 {
 	super(nom,ap,nomUsuario,contra);
@@ -50,110 +51,123 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	simplexManager = new SimplexManager();
 }
 
-public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
-{
-	simplexManager.procesarDispositivos(disps);
-	return simplexManager.getHorasRecomendadas(disps, disp);
-}
+//SIMPLEX//
 
-public Posicion getPosicion() {
-    return posicion;
-}
+		public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
+	{
+		simplexManager.procesarDispositivos(disps);
+		return simplexManager.getHorasRecomendadas(disps, disp);
+	}
+
+//SIMPLEX//
 
 
-public void agregarSensor (Sensor unSensor) {
+//CONTROLADORES//
+
+	public void agregarSensor (Sensor unSensor) {
     sensores.add(unSensor);
 }
 
-public int cantDispositivosTotal()
-{
-	return dispositivosInteligentes.size() + dipositivosEstandares.size();
-}
+//CONTROLADORES//
 
-public int cantDispositivosEncendidos() 
-{
-	return dispositivosEncendidos().size();
-}
 
-public int cantDispositivosApagados() 
-{
-	return cantDispositivosTotal() - cantDispositivosEncendidos();
-}
+//DISPOSITIVOS//
 
-	//Adaptar estos metodos
-
-public List<Dispositivo> dispositivosEncendidos() 
-{
-	return dispositivosInteligentes.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
-			 .collect(Collectors.toList());
-}
-
-public boolean algunoEncendido() 
-{
-    return dispositivosInteligentes.stream().anyMatch(unDispositivo->unDispositivo.estaEncendido());
-}
-
-public float consumoMensual()
-{
-    float consumo = 0;
-
-    for(Dispositivo dispositivo:dispositivosInteligentes)
-			consumo+= dispositivo.getConsumo();
-
-    return consumo;
-
-}
-	
-public float estimarFacturacion(List<Categoria> categorias){
-		return 	categoria.estimarFacturacionMensual(this);
+	public int cantDispositivosTotal()
+	{
+		return dispositivosInteligentes.size() + dipositivosEstandares.size();
 	}
 
-public void setCategoria(List<Categoria> categorias)
-{
-	
-    categorias.sort(Comparator.comparingDouble(Categoria::consumoMensualMin)
-                );
-		
-    this.categoria = (categorias.stream()
-            .filter(c->c.pertence(this)).findFirst()
-            .get());
-}
+	public int cantDispositivosEncendidos()
+	{
+		return dispositivosEncendidos().size();
+	}
 
+	public int cantDispositivosApagados()
+	{
+		return cantDispositivosTotal() - cantDispositivosEncendidos();
+	}
 
+		//Adaptar estos metodos
 
-public Categoria getCategoria()
-{
-		return this.categoria;
-}
+	public List<Dispositivo> dispositivosEncendidos()
+	{
+		return dispositivosInteligentes.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
+				 .collect(Collectors.toList());
+	}
 
+	public boolean algunoEncendido()
+	{
+		return dispositivosInteligentes.stream().anyMatch(unDispositivo->unDispositivo.estaEncendido());
+	}
 
-
-public String nombreCategoria()
-{
-		return categoria.tipo();
-}
-
-
-
-public void agregarInteligente(Inteligente nuevoDispositivo)
-{
+	public void agregarInteligente(Inteligente nuevoDispositivo)
+	{
 
 		dispositivosInteligentes.add(nuevoDispositivo);
-		if(!serialRepetida(nuevoDispositivo.nroSerial()))
-            puntos += nuevoDispositivo.puntos();
-}
+		if(!serialRepetida(nuevoDispositivo.nroSerial())) {
+			puntos += nuevoDispositivo.puntos();
+		}
+	}
 
-public void agregarEstandar(Estandar nuevoDispositivo)
+	public void agregarEstandar(Estandar nuevoDispositivo)
 	{
 
 		dipositivosEstandares.add(nuevoDispositivo);
 	}
 
-public boolean serialRepetida(int serial_nueva)
-{
-        return dispositivosInteligentes.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva)); //No me importa si es estandar ya que no da puntos
-}
+	public float consumoMensual()
+	{
+		float consumo = 0;
 
+		for(Dispositivo dispositivo:dispositivosInteligentes)
+			consumo+= dispositivo.getConsumo();
+
+		return consumo;
+
+	}
+
+	public boolean serialRepetida(int serial_nueva)
+	{
+		return dispositivosInteligentes.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva)); //No me importa si es estandar ya que no da puntos
+	}
+
+//DISPOSITIVOS//
+
+//CATEGORIAS//
+
+	public Categoria getCategoria()
+	{
+		return this.categoria;
+	}
+
+	public float estimarFacturacion(List<Categoria> categorias){
+			return 	categoria.estimarFacturacionMensual(this);
+		}
+
+
+	public void setCategoria(List<Categoria> categorias)
+	{
+
+		categorias.sort(Comparator.comparingDouble(Categoria::consumoMensualMin));
+
+		this.categoria = (categorias.stream()
+				.filter(c->c.pertence(this)).findFirst()
+				.get());
+	}
+
+	public String nombreCategoria()
+	{
+			return categoria.tipo();
+	}
+
+//CATEGORIAS//
+
+//GEOPOSICIONAMIENTO//
+
+	public Posicion getPosicion() {
+		return posicion;
+	}
 
 	// Metodo para asignar un transformador a un cliente.
 	public void asignarTransformador(List<ZonaGeografica> listaZonas)
@@ -161,13 +175,14 @@ public boolean serialRepetida(int serial_nueva)
 		for(ZonaGeografica zonaG : listaZonas)
 		{
 
-			if(zonaG.pertenece(this))
+			if(zonaG.clientePertenece(this))
 			{
 				zonaG.asignarTransformador(this);
 			}
 		}
-
 	}
-	
+
+//GEOPOSICIONAMIENTO//
+
 }
 

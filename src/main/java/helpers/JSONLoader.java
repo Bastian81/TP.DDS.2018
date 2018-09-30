@@ -1,5 +1,8 @@
 package helpers;
-import com.google.gson.Gson;
+import com.google.gson.*;
+import org.joda.time.DateTime;
+
+import java.lang.reflect.Type;
 
 public class JSONLoader
 {
@@ -20,14 +23,24 @@ public class JSONLoader
   public DatosJSON get()
   {
     String contenidoJSON = this.reader.ReadFile(this.filePath);
-	
-	Gson gson = new Gson();	
-	DatosJSON datosJson = gson.fromJson(contenidoJSON, DatosJSON.class);	
-    datosJson.categorizarClientes();
-	
+    Gson gson = gsonInit();
+
+    DatosJSON datosJson = gson.fromJson(contenidoJSON, DatosJSON.class);
+
 	return datosJson;
   }
-  
+
+    //Armo esto para que se puedan levantar las fechas como DateTime
+    private Gson gsonInit()
+    {
+        return new GsonBuilder().registerTypeAdapter(DateTime.class, new JsonDeserializer<DateTime>() {
+            @Override
+            public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                    throws JsonParseException {
+                return new DateTime(json.getAsString());
+            }
+        }).create();
+    }
 
 
 }

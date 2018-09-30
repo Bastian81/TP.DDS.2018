@@ -52,4 +52,12 @@ public class SimplexManager extends SimplexFacade{
 		int index = dispositivos.indexOf(disp);
 		return solucion.getPoint()[index];
 	}
+
+	public void activarAhorroAutomatico(){
+		ahorroAutomatico = true;
+	}
+
+	public void desactivarAhorroAutomatico(){
+		ahorroAutomatico = false;
+	}
 }
