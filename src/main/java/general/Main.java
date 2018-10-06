@@ -1,24 +1,19 @@
 package general;
 
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+import datos.JSONLoader;
+import datos.Persistencia;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
+        JSONLoader loader = new JSONLoader( "categorias.json");
+        List<Categoria> categorias = loader.getCategorias();
 
-
-
-        transaction.begin();
-        Categoria unaCategoria = new Categoria("R1",0,150, (float)18.76, (float)0.664);
-        entityManager.persist(unaCategoria);
-        transaction.commit();
-
+        Persistencia persistencia = new Persistencia();
+        categorias.forEach(categoria -> persistencia.persistir(categoria));
 
     }
 }

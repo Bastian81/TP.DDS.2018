@@ -55,7 +55,7 @@ public class TestGeo {
         almagroNorte = new ZonaGeografica(-34.604305, -58.421896, 0.9);
         villaCrespo = new ZonaGeografica(-34.599449, -58.444196, 1.21);
 
-        //dispositivos//
+        //dispositivosInteligentes//
         heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
 
 

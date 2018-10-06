@@ -11,12 +11,20 @@ public class Administrador extends Usuario {
 	 DateTime fechaDeAlta;
 
 	// Constructor
+
 public Administrador(String nombre, String ap, String userName, String password, int numeroId)
 	{
 		super(nombre,ap,userName,password);
 		this.adminID = numeroId;
 		DateTime alta = new DateTime();
 		this.fechaDeAlta = alta;
+	}
+
+	public Administrador(String nombre, String ap, String userName, String password,DateTime fechaAlta ,int numeroId)
+	{
+		super(nombre,ap,userName,password);
+		this.adminID = numeroId;
+		this.fechaDeAlta = fechaAlta;
 	}
 
 public int mesesAdministrando() {

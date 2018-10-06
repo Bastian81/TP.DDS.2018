@@ -1,8 +1,6 @@
 package dispositivo;
-import estado.Estado;
+import estado.*;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -12,6 +10,8 @@ public class Inteligente extends Dispositivo {
 
     private byte macAddress;
     private Estado estado;
+    int estadoValue;
+
     public List<HistorialConsumo> historialConsumo;
 
     public Inteligente(String nombre, Float consumo, int nroSerial, byte macAddress, Estado estado)
@@ -21,6 +21,8 @@ public class Inteligente extends Dispositivo {
         this.estado = estado;
         this.historialConsumo = new ArrayList<HistorialConsumo>();
     }
+
+
     public HistorialConsumo ultimoLista() {
     	if(historialConsumo.isEmpty())
     		return null;
@@ -93,4 +95,9 @@ public class Inteligente extends Dispositivo {
 
     public Boolean esInt() {return true;}
     public int puntos() {return 15;}
+
+    public void instanciarEstado() {
+        EstadoBuilder estadoBuilder = new EstadoBuilder();
+        estado = estadoBuilder.getStateInstance(estadoValue);
+    }
 }

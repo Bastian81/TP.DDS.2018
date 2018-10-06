@@ -43,7 +43,7 @@ public class TestControlador {
         on = new Encendido();
         off = new Apagado();
 
-        //Dispositivos//
+        //dispositivosInteligentes//
         heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);
 
         //Reglas//

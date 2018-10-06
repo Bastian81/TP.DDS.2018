@@ -22,9 +22,9 @@ public class SimplexManager extends SimplexFacade{
 		ahorroAutomatico = false;
 	}
 	
-	public void procesarDispositivos(List<Inteligente> dispositivos)
+	public void procesardispositivosInteligentes(List<Inteligente> dispositivosInteligentes)
 	{
-		List<Float> consumosHorarios = dispositivos.stream()
+		List<Float> consumosHorarios = dispositivosInteligentes.stream()
             .map(disp -> (disp.getConsumo()))
             .collect(Collectors.toList());
 		
@@ -37,9 +37,9 @@ public class SimplexManager extends SimplexFacade{
 		if(ahorroAutomatico)
 		{
 			int i;
-			for(i = 0; i < dispositivos.size(); i++)
+			for(i = 0; i < dispositivosInteligentes.size(); i++)
 			{
-				Inteligente disp = dispositivos.get(i);
+				Inteligente disp = dispositivosInteligentes.get(i);
 				double horas = disp.getUsoTotalDelMesActualEnHoras();
 				if(horas > solucion.getPoint()[i])
 					disp.apagar();
@@ -47,9 +47,9 @@ public class SimplexManager extends SimplexFacade{
 		}
 	}
 	
-	public double getHorasRecomendadas(List<Inteligente> dispositivos, Dispositivo disp)
+	public double getHorasRecomendadas(List<Inteligente> dispositivosInteligentes, Dispositivo disp)
 	{
-		int index = dispositivos.indexOf(disp);
+		int index = dispositivosInteligentes.indexOf(disp);
 		return solucion.getPoint()[index];
 	}
 

@@ -5,18 +5,13 @@ import dispositivo.Estandar;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import geoposicionamiento.Posicion;
-import geoposicionamiento.Transformador;
 import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 import controlador.Sensor;
-
-
-import org.joda.time.DateTime;
 
 public class Cliente extends Usuario
 {
@@ -31,10 +26,13 @@ public class Cliente extends Usuario
     DateTime fechaDeAlta;
     ArrayList<Sensor> sensores;
 	Posicion posicion;
-	SimplexManager simplexManager;
+	private transient SimplexManager simplexManager;
 
+	public ArrayList<Inteligente> getDispositivosInteligentes() {
+		return dispositivosInteligentes;
+	}
 
-//Constructor//
+	//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)
 {
 	super(nom,ap,nomUsuario,contra);
@@ -55,7 +53,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 
 		public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
 	{
-		simplexManager.procesarDispositivos(disps);
+		simplexManager.procesardispositivosInteligentes(disps);
 		return simplexManager.getHorasRecomendadas(disps, disp);
 	}
 
@@ -71,26 +69,26 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 //CONTROLADORES//
 
 
-//DISPOSITIVOS//
+//dispositivosInteligentes//
 
-	public int cantDispositivosTotal()
+	public int cantdispositivosInteligentesTotal()
 	{
 		return dispositivosInteligentes.size() + dipositivosEstandares.size();
 	}
 
-	public int cantDispositivosEncendidos()
+	public int cantdispositivosInteligentesEncendidos()
 	{
-		return dispositivosEncendidos().size();
+		return dispositivosInteligentesEncendidos().size();
 	}
 
-	public int cantDispositivosApagados()
+	public int cantdispositivosInteligentesApagados()
 	{
-		return cantDispositivosTotal() - cantDispositivosEncendidos();
+		return cantdispositivosInteligentesTotal() - cantdispositivosInteligentesEncendidos();
 	}
 
 		//Adaptar estos metodos
 
-	public List<Dispositivo> dispositivosEncendidos()
+	public List<Dispositivo> dispositivosInteligentesEncendidos()
 	{
 		return dispositivosInteligentes.stream().filter(unDispositivo -> unDispositivo.estaEncendido())
 				 .collect(Collectors.toList());
@@ -120,7 +118,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	{
 		float consumo = 0;
 
-		for(Dispositivo dispositivo:dispositivosInteligentes)
+		for(Dispositivo dispositivo: dispositivosInteligentes)
 			consumo+= dispositivo.getConsumo();
 
 		return consumo;
@@ -132,7 +130,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 		return dispositivosInteligentes.stream().anyMatch(unDispositivo->(unDispositivo.nroSerial() == serial_nueva)); //No me importa si es estandar ya que no da puntos
 	}
 
-//DISPOSITIVOS//
+//dispositivosInteligentes//
 
 //CATEGORIAS//
 
