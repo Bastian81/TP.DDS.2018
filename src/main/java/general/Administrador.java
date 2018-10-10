@@ -3,13 +3,23 @@ package general;
 import java.util.Date;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeUtils;
 import org.joda.time.Months;
 
-public class Administrador extends Usuario {
-	
-	 int adminID;
-	 DateTime fechaDeAlta;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
+@Entity
+public class Administrador extends Usuario {
+
+	@Transient
+	DateTime fechaDeAlta;
+
+	@Id
+	@GeneratedValue
+	int adminID;
 	// Constructor
 
 public Administrador(String nombre, String ap, String userName, String password, int numeroId)

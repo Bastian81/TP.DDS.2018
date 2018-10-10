@@ -23,6 +23,7 @@ public class Persistencia {
         }
         catch(Exception e)
         {
+            transaction.rollback();
             System.out.println("Error al intentar persistir:\n" + e.getMessage() );
         }
     }

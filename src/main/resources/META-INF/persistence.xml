@@ -9,6 +9,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
         <class>general.Categoria</class>
+        <class>datos.TipoDispositivo</class>
 
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>

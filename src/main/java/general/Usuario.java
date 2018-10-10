@@ -1,5 +1,11 @@
 package general;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Usuario {
 		
 	public String nombre;
@@ -7,8 +13,7 @@ public abstract class Usuario {
 	public String username;
 	public String password;
 
-	
-	
+
 	// Constructor
 	public Usuario(String nom, String ap, String nomUsuario, String contra)
 	{
