@@ -39,7 +39,7 @@ public Boolean clientePertenece(Cliente unCliente)
     return false;
 }
 
-public void asignarTransformador (Cliente unCliente)
+public Transformador asignarTransformador (Cliente unCliente)
 {
     // Asigna a un cliente el transformador mas cercano
 
@@ -53,35 +53,42 @@ public void asignarTransformador (Cliente unCliente)
     Collections.sort(aux);
 
     for(Transformador transformador: transformadores)
-        {
+    {
         if( this.distanciaKM(transformador.getPosicion(), unCliente.getPosicion()) == aux.get(0) )
             {
-                transformador.agregarCliente(unCliente);
+                return transformador;
             }
-        }
     }
 
-    public boolean existeOtroMasCercano(Posicion casaCliente, Posicion transformadorActual)
-    {
-        double distanciaActual = this.distanciaKM(casaCliente,transformadorActual);
+    return null;
+}
+
+public boolean existeOtroMasCercano(Posicion casaCliente, Posicion transformadorActual, ArrayList<Transformador> listaTransformadores)
+{
+    double distanciaActual = this.distanciaKM(casaCliente,transformadorActual);
 
 
-        if(this.transformadores().stream().anyMatch(t -> ((this.distanciaKM(t.getPosicion(),casaCliente)) < distanciaActual))) {
-            return true;
-        }
-        return false;
+    if(listaTransformadores.stream().anyMatch(t -> ((this.distanciaKM(t.getPosicion(),casaCliente)) < distanciaActual))) {
+        return true;
     }
+    return false;
+}
+
+
+
 public void agregarTransformador (Transformador transformador)
 {
+        Transformador transformadorDesignado;
         this.transformadores().add(transformador);
         for(Transformador transformador1: this.transformadores()) //Se deben actualizar los clientes de c/transformador
         {
             for(Cliente cliente: transformador1.getClientes())
             {
-                if(this.existeOtroMasCercano(cliente.getPosicion(),transformador1.getPosicion())) //Si hay un T mas cercano
+                if(this.existeOtroMasCercano(cliente.getPosicion(),transformador1.getPosicion(), this.transformadores)) //Si hay un T mas cercano
                 {
                     transformador1.getClientes().remove(cliente); //elimina al cliente de T
-                    this.asignarTransformador(cliente);           //Reasignalo
+                    transformadorDesignado = this.asignarTransformador(cliente);           //Reasignalo
+                    transformadorDesignado.agregarCliente(cliente);
                 }
             }
         }
@@ -89,11 +96,13 @@ public void agregarTransformador (Transformador transformador)
 
 public void eliminarTransformador(Transformador unTransformador)
 {
+    Transformador transformadorDesignado;
     this.transformadores().remove(unTransformador);
     ArrayList<Cliente> clientesAux = new ArrayList<>();
     for(Cliente cliente: unTransformador.getClientes())
     {
-        this.asignarTransformador(cliente); // Asigna un nuevo transformador a cada cliente
+        transformadorDesignado = this.asignarTransformador(cliente); // Asigna un nuevo transformador a cada cliente
+        transformadorDesignado.agregarCliente(cliente);
     }
 }
 

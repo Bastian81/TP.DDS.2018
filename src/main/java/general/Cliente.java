@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import geoposicionamiento.Posicion;
+import geoposicionamiento.Transformador;
 import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 import controlador.Sensor;
@@ -170,14 +171,35 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	// Metodo para asignar un transformador a un cliente.
 	public void asignarTransformador(List<ZonaGeografica> listaZonas)
 	{
+		Transformador transformadorDesignado = null;
+		Transformador aux;
+		int i=0;
+
 		for(ZonaGeografica zonaG : listaZonas)
 		{
-
 			if(zonaG.clientePertenece(this))
 			{
-				zonaG.asignarTransformador(this);
+				ArrayList<Transformador> listaTransf = new ArrayList<Transformador> ();
+
+				aux = zonaG.asignarTransformador(this);
+
+				listaTransf.add(aux);
+
+				if(i == 0){
+					transformadorDesignado = aux;
+					i++;
+				}
+				else{
+
+					if(zonaG.existeOtroMasCercano(this.posicion, transformadorDesignado.getPosicion(), listaTransf)) {
+						transformadorDesignado = aux;
+						i++;
+					}
+				}
 			}
 		}
+
+		transformadorDesignado.agregarCliente(this);
 	}
 
 //GEOPOSICIONAMIENTO//
