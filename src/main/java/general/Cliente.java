@@ -30,6 +30,8 @@ public class Cliente extends Usuario
     ArrayList<Estandar> dipositivosEstandares;
     DateTime fechaDeAlta;
     ArrayList<Sensor> sensores;
+
+    @Embedded
 	Posicion posicion;
 	private transient SimplexManager simplexManager;
 

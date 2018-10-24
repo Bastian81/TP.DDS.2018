@@ -11,7 +11,7 @@ public class ZonaGeografica {
 
     String nombreZona;
 
-    @Transient
+    @Embedded
     Posicion posicionZona;
 
     double radioZona;
