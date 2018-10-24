@@ -41,9 +41,8 @@ public class Cliente extends Usuario
 	@GeneratedValue
 	int idCliente;
 
-	/*@ForeignKey
-	@GeneratedValue
-	int transformadorID;*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	public Transformador transformador;
 
 	//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)

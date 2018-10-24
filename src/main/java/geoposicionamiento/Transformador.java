@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Transformador {
 
-    @Transient
-    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    @OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL)
+    List<Cliente> clientes = new ArrayList<>();
 
     @Embedded
     private Posicion posicion;
@@ -37,7 +37,7 @@ public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
 public Posicion getPosicion () {
         return posicion;
     }
-public ArrayList<Cliente> getClientes() {
+public List<Cliente> getClientes() {
         return clientes;
     }
 
