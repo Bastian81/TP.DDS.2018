@@ -14,13 +14,17 @@ import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 import controlador.Sensor;
 
+import javax.persistence.*;
+
+@Entity
 public class Cliente extends Usuario
 {
-    int puntos;
+	int puntos;
     String tipoDocumento;
     int documento;
     int telefonoContacto;
     String domicilio;
+    @Transient
     Categoria categoria;
     ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
     ArrayList<Estandar> dipositivosEstandares;
@@ -32,6 +36,14 @@ public class Cliente extends Usuario
 	public ArrayList<Inteligente> getDispositivosInteligentes() {
 		return dispositivosInteligentes;
 	}
+
+	@Id
+	@GeneratedValue
+	int idCliente;
+
+	/*@ForeignKey
+	@GeneratedValue
+	int transformadorID;*/
 
 	//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)

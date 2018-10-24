@@ -2,19 +2,35 @@ package geoposicionamiento;
 
 import general.Cliente;
 
+import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Transformador {
 
-    Posicion posicion;
+    @Transient
     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
-public Transformador (double unaLatitud, double unaLongitud) {
+    @Embedded
+    private Posicion posicion;
+
+    @Id
+    @GeneratedValue
+    //@Column(name = "idTransformador", unique = true)
+    int idTrasformador;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "zonaId", nullable = false)
+    public ZonaGeografica zona;
+
+public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
 
     double latitud = unaLatitud;
     double longitud = unaLongitud;
     posicion = new Posicion(latitud, longitud);
+    //idTrasformador = id;
 
 }
 

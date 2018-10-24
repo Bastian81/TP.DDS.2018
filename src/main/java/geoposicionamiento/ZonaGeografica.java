@@ -2,19 +2,32 @@ package geoposicionamiento;
 
 import general.Cliente;
 
+import javax.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
+@Entity
 public class ZonaGeografica {
 
+    String nombreZona;
+
+    @Transient
     Posicion posicionZona;
+
     double radioZona;
-    ArrayList<Transformador> transformadores = new ArrayList<>();
+
+    @OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idTrasnformador")
+    public List<Transformador> transformadores = new ArrayList<>();
+
+    @Id
+    @GeneratedValue
+    int zonaId;
 
 
-public ZonaGeografica(double unaLatitud, double unaLongitud, double radio) {
+public ZonaGeografica(String nombre, double unaLatitud, double unaLongitud, double radio) {
 
+    nombreZona = nombre;
     double latitud = unaLatitud;
     double longitud = unaLongitud;
     posicionZona = new Posicion(latitud, longitud);
@@ -63,7 +76,7 @@ public Transformador asignarTransformador (Cliente unCliente)
     return null;
 }
 
-public boolean existeOtroMasCercano(Posicion casaCliente, Posicion transformadorActual, ArrayList<Transformador> listaTransformadores)
+public boolean existeOtroMasCercano(Posicion casaCliente, Posicion transformadorActual, List<Transformador> listaTransformadores)
 {
     double distanciaActual = this.distanciaKM(casaCliente,transformadorActual);
 
@@ -154,7 +167,6 @@ public double getConsumo()
 }
 
 }
-
 
 
 

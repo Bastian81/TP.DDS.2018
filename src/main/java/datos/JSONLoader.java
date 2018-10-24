@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 
 import general.Administrador;
@@ -83,5 +85,21 @@ public class JSONLoader
         }).create();
     }
 
+    public List<ZonaGeografica> getZona()
+    {
+        List<ZonaGeografica> zonas = null;
+
+        try {
+            Type tipo = new TypeToken<List<ZonaGeografica>>() {
+            }.getType();
+            zonas =  gson.fromJson(reader, tipo);
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error al intentar levantar las zonas: " + e.getMessage());
+        }
+
+        return zonas;
+    }
 
 }

@@ -52,8 +52,8 @@ public class TestGeo {
 
         //zonas//
         zonasTest = new ArrayList<ZonaGeografica>();
-        almagroNorte = new ZonaGeografica(-34.604305, -58.421896, 0.9);
-        villaCrespo = new ZonaGeografica(-34.599449, -58.444196, 1.21);
+        almagroNorte = new ZonaGeografica("almagroNorte", -34.604305, -58.421896, 0.9);
+        villaCrespo = new ZonaGeografica("villaCrespo", -34.599449, -58.444196, 1.21);
 
         //dispositivosInteligentes//
         heladera = new Inteligente("heladera", 5.67f, 1, (byte)1, on);

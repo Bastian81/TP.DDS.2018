@@ -1,0 +1,50 @@
+[
+  {
+    "nombreZona": "AlmagroNorte",
+    "posicionZona":
+    {
+      "latitud": -34.604305,
+      "longitud": -58.421896
+    },
+    "radio": 0.9,
+    "transformadores": [
+      {
+        "posicion":
+          {
+            "latitud": -34.598373,
+            "longitud": -58.419975
+          },
+        "clientes": []
+      },
+      {
+        "posicion":
+          {
+            "latitud": -34.600626,
+            "longitud": -58.425201
+          },
+        "clientes": []
+      }
+    ]
+  },
+
+  {
+    "nombreZona": "villaCrespo",
+    "posicionZona":
+      {
+        "latitud": -34.599449,
+        "longitud": -58.444196
+      },
+    "radio": 1.21,
+    "transformadores": [
+      {
+        "posicion":
+          {
+            "latitud": -34.598071,
+            "longitud": -58.456212
+          },
+        "clientes": []
+      }
+    ]
+  }
+
+]
