@@ -39,10 +39,6 @@ public class Cliente extends Usuario
 		return dispositivosInteligentes;
 	}
 
-	@Id
-	@GeneratedValue
-	int idCliente;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	public Transformador transformador;
 

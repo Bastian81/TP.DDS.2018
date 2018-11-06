@@ -20,8 +20,6 @@ public class Main {
         JSONLoader loader2 = new JSONLoader("administradores.json");
         List<Administrador> admin = loader2.getAdministradores();
 
-        Persistencia persistenciaAdmin = new Persistencia();
-        admin.forEach((administrador -> persistenciaAdmin.persistir(administrador)));
 
         loader = new JSONLoader( "tiposDispositivo.json");
         List<TipoDispositivo> tiposDispositivos = loader.getTiposDispositivo();
@@ -29,10 +27,30 @@ public class Main {
         Persistencia persistenciaDisp = new Persistencia();
         tiposDispositivos.forEach(tipo -> persistenciaDisp.persistir(tipo));*/
 
-        JSONLoader loader = new JSONLoader( "geo.json");
+        JSONLoader loader;
+
+        loader = new JSONLoader( "geo.json");
         List<ZonaGeografica> zonasGeograficas = loader.getZona();
 
         Persistencia persistenciaZona = new Persistencia();
-        zonasGeograficas.forEach(zona -> persistenciaZona.persistir(zona));
+
+        loader = new JSONLoader("administradores.json");
+        List<Administrador> admin = loader.getAdministradores();
+
+        Persistencia persistenciaAdmin = new Persistencia();
+        admin.forEach((administrador -> persistenciaAdmin.persistir(administrador)));
+
+        loader = new JSONLoader( "categorias.json");
+        List<Categoria> categorias = loader.getCategorias();
+
+        Persistencia persistencia = new Persistencia();
+        categorias.forEach(categoria -> persistencia.persistir(categoria));
+
+        loader = new JSONLoader( "tiposDispositivo.json");
+        List<TipoDispositivo> tiposDispositivos = loader.getTiposDispositivo();
+
+        Persistencia persistenciaDisp = new Persistencia();
+        tiposDispositivos.forEach(tipo -> persistenciaDisp.persistir(tipo));
+
     }
 }

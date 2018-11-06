@@ -6,18 +6,19 @@ import javax.persistence.Id;
 
 @Entity
 public class TipoDispositivo {
-    byte minimo,maximo;
+    float minimo,maximo;
     String nombre;
 
+    @GeneratedValue
     @Id
     int id;
 
 
-    public byte getMinimo() {
+    public float getMinimo() {
         return minimo;
     }
 
-    public byte getMaximo() {
+    public float getMaximo() {
         return maximo;
     }
 
