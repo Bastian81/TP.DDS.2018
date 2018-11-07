@@ -1,183 +1,222 @@
- [
-{
-"nombre": "Gladys",
-"apellido": "Marks",
-"username": "Trevino",
-"password": "Orr",
-"domicilio": "Calle 1",
-"tipoDocumento": "DNI",
-"documento": "123",
-"telefonoContacto": 123,
-"dispositivosInteligentes": [
-{
-"nombre": "Notebook",
-"consumo": 37.32,
-"estadoValue": 1
-},
-{
+[
+  {
+    "nombre": "Gladys",
+    "apellido": "Marks",
+    "username": "Trevino",
+    "password": "Orr",
+    "domicilio": "Calle 1",
+    "tipoDocumento": "DNI",
+    "documento": "123",
+    "telefonoContacto": 123,
+    "dispositivosInteligentes":
+      [
+      {
+      "nombre": "Notebook",
+      "consumo": 37.32,
+      "estadoValue": 1
+      },
+      {
 
-"nombre": "Tostadora",
-"consumo": 6.78,
-"estadoValue":  2
-},
-{
+      "nombre": "Tostadora",
+      "consumo": 6.78,
+      "estadoValue":  2
+      },
+      {
 
-"nombre": "Notebook",
-"consumo": 45.84,
-"estadoValue": 2
-},
-{
+      "nombre": "Notebook",
+      "consumo": 45.84,
+      "estadoValue": 2
+      },
+      {
 
-"nombre": "Tostadora",
-"consumo": 65.74,
-"estadoValue": 2
-}
-]
-},
-{
-"nombre": "Mindy",
-"apellido": "Adkins",
-"username": "Randall",
-"password": "Franco",
-"domicilio": "Calle 1",
-"tipoDocumento": "DNI",
-"documento": "123",
-"telefonoContacto": 123,
-"dispositivosInteligentes": [
-   {
+      "nombre": "Tostadora",
+      "consumo": 65.74,
+      "estadoValue": 2
+      }
+    ],
+    "sensores": [
+      {
+        "nombre": "sensorTemp"
+      },
+      {
+        "nombre": "sensorMov"
+      }
+    ]
+  },
+  {
+    "nombre": "Mindy",
+    "apellido": "Adkins",
+    "username": "Randall",
+    "password": "Franco",
+    "domicilio": "Calle 1",
+    "tipoDocumento": "DNI",
+    "documento": "123",
+    "telefonoContacto": 123,
+    "dispositivosInteligentes": [
+       {
+         "nombre": "Tostadora",
+         "consumo": 82.15,
+         "estadoValue": 1
+       },
+       {
 
-     "nombre": "Tostadora",
-     "consumo": 82.15,
-     "estadoValue": 1
-   },
-   {
+         "nombre": "Microondas",
+         "consumo": 88.75,
+         "estadoValue": 0
+       }
+     ],
 
-     "nombre": "Microondas",
-     "consumo": 88.75,
-     "estadoValue": 0
-   }
- ]
-},
-{
-"nombre": "Mercedes",
-"apellido": "Walton",
-"username": "Cherie",
-"password": "Ryan",
-"dispositivosInteligentes": [
-{
-"nombre": "Microondas",
-"consumo": 89.82,
-"estadoValue": 1
-},
-{
+    "sensores": [
+      {
+        "nombre": "sensorTemp"
+      }
+    ]
+  },
+  {
+  "nombre": "Mercedes",
+  "apellido": "Walton",
+  "username": "Cherie",
+  "password": "Ryan",
+  "dispositivosInteligentes": [
+      {
+      "nombre": "Microondas",
+      "consumo": 89.82,
+      "estadoValue": 1
+      },
+      {
 
-"nombre": "Notebook",
-"consumo": 37.5,
-"estadoValue": 1
-},
-{
+      "nombre": "Notebook",
+      "consumo": 37.5,
+      "estadoValue": 1
+      },
+      {
 
-"nombre": "Notebook",
-"consumo": 63.1,
-"estadoValue": 2
-},
-{
+      "nombre": "Notebook",
+      "consumo": 63.1,
+      "estadoValue": 2
+      },
+      {
 
-"nombre": "Tostadora",
-"consumo": 32.42,
-"estadoValue": 0
-},
-{
+      "nombre": "Tostadora",
+      "consumo": 32.42,
+      "estadoValue": 0
+      },
+      {
 
-"nombre": "Horno",
-"consumo": 10000,
-"estadoValue": 1
-}
-]
-},
-{
-"nombre": "Krista",
-"apellido": "Patton",
-"username": "Carmella",
-"password": "Jacobson",
-"dispositivosInteligentes": [
-{
+      "nombre": "Horno",
+      "consumo": 10000,
+      "estadoValue": 1
+      }
+    ],
 
-"nombre": "Microondas",
-"consumo": 80.36,
-"estadoValue": 2
-},
-{
+    "sensores": [
+      {
+        "nombre": "sensorMov"
+      }
+    ]
+  },
+  {
+  "nombre": "Krista",
+  "apellido": "Patton",
+  "username": "Carmella",
+  "password": "Jacobson",
+  "dispositivosInteligentes": [
+      {
+      "nombre": "Microondas",
+      "consumo": 80.36,
+      "estadoValue": 2
+      },
+      {
+      "nombre": "Microondas",
+      "consumo": 49.92,
+      "estadoValue": 1
+      }
+    ],
+    "sensores": [
+      {
+        "nombre": "sensorHumedad"
+      },
+    ]
+  },
+  {
+    "nombre": "Morrow",
+    "apellido": "Herring",
+    "username": "Whitehead",
+    "password": "Potter",
+    "dispositivosInteligentes": [
+      {
+      "nombre": "Microondas",
+      "consumo": 20.8,
+      "estadoValue": 0
+      }
+    ],
+    "sensores": [
+      {
+        "nombre": "sensorLock"
+      },
+      {
+        "nombre": "sensorGases"
+      }
+    ]
+  },
+  {
+    "nombre": "Bianca",
+    "apellido": "Callahan",
+    "username": "Beatriz",
+    "password": "Roslyn",
+    "dispositivosInteligentes": [
+        {
 
-"nombre": "Microondas",
-"consumo": 49.92,
-"estadoValue": 1
-}
-]
-},
-{
-"nombre": "Morrow",
-"apellido": "Herring",
-"username": "Whitehead",
-"password": "Potter",
-"dispositivosInteligentes": [
-{
+        "nombre": "Microondas",
+        "consumo": 89.39,
+        "estadoValue": 1
+        },
+        {
 
-"nombre": "Microondas",
-"consumo": 20.8,
-"estadoValue": 0
-}
-]
-},
-{
-"nombre": "Bianca",
-"apellido": "Callahan",
-"username": "Beatriz",
-"password": "Roslyn",
-"dispositivosInteligentes": [
-{
+        "nombre": "Notebook",
+        "consumo": 53.9,
+        "estadoValue": 1
+        },
+        {
 
-"nombre": "Microondas",
-"consumo": 89.39,
-"estadoValue": 1
-},
-{
+        "nombre": "Microondas",
+        "consumo": 5.93,
+        "estadoValue": 1
+        },
+        {
 
-"nombre": "Notebook",
-"consumo": 53.9,
-"estadoValue": 1
-},
-{
-
-"nombre": "Microondas",
-"consumo": 5.93,
-"estadoValue": 1
-},
-{
-
-"nombre": "Notebook",
-"consumo": 48.47,
-"estadoValue": 0
-}
-]
-},
-{
-"nombre": "Snow",
-"apellido": "Logan",
-"username": "Fitzgerald",
-"password": "Hurst",
-"dispositivosInteligentes": [
-{
-
-"nombre": "Notebook",
-"consumo": 72.47,
-"estadoValue": 1
-},
-{
-"nombre": "Celular",
-"consumo": 65.43,
-"estadoValue": 2
-}
-]
-}
+        "nombre": "Notebook",
+        "consumo": 48.47,
+        "estadoValue": 0
+        }
+    ],
+    "sensores": [
+      {
+        "nombre": "sensorLuminicidad"
+      }
+    ]
+  },
+  {
+    "nombre": "Snow",
+    "apellido": "Logan",
+    "username": "Fitzgerald",
+    "password": "Hurst",
+    "dispositivosInteligentes": [
+        {
+        "nombre": "Notebook",
+        "consumo": 72.47,
+        "estadoValue": 1
+        },
+        {
+        "nombre": "Celular",
+        "consumo": 65.43,
+        "estadoValue": 2
+        }
+      ],
+    "sensores": [
+      {
+        "nombre": "sensorTemp"
+      }
+    ]
+  }
 ]
