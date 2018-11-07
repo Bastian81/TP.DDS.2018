@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import geoposicionamiento.Posicion;
 import geoposicionamiento.Transformador;
 import geoposicionamiento.ZonaGeografica;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.joda.time.DateTime;
 import controlador.Sensor;
 
@@ -31,21 +33,29 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
     int telefonoContacto;
     String domicilio;
 
-	double latitud = 0;
-	double longitud = 0;
+
+	@Transient
+	Categoria categoria;
 
     //@OneToOne
 	//		@JoinColumn (name = "Categoria ID")
-    @Transient
-	Categoria categoria;
 
-    /*@OneToMany
-			@JoinTable (
-					name = "Dispositivos por Cliente",
-					joinColumns = @JoinColumn(name = "Cliente ID"),
-					inverseJoinColumns = @JoinColumn(name = "Inteligente ID")
-			)*/
-    @Transient
+
+	/*		@JoinTable (
+                    name = "Dispositivos por Cliente",
+                    joinColumns = @JoinColumn(name = "Cliente ID"),
+                    inverseJoinColumns = @JoinColumn(name = "Inteligente ID")
+            )
+
+    @OneToMany(
+    		mappedBy = "Cliente",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+
+	)
+	@JoinColumn (name = "Dipositivo ID")
+	*/
+	@Transient
     ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
 
     //@OneToMany
@@ -62,7 +72,7 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 
     //@OneToOne
 	//@JoinColumn (name = "Posicion ID")
-	@Transient
+	@Embedded
 	Posicion posicion;
 
 
@@ -88,8 +98,8 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	DateTime alta = new DateTime();
 	this.fechaDeAlta = alta;
 	puntos = 0;
-	latitud = unaLatitud;
-	longitud = unaLongitud;
+	double latitud = unaLatitud;
+	double longitud = unaLongitud;
 	posicion = new Posicion(latitud, longitud);
 	simplexManager = new SimplexManager();
 }
