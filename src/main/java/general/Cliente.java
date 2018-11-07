@@ -92,8 +92,12 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 	public ArrayList<Inteligente> getDispositivosInteligentes() {
 		return dispositivosInteligentes;
 	}
+
+
+	public List<Sensor> sensores = new ArrayList<>();
+
 	//Constructor//
-public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)
+public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud, ArrayList<Sensor> unosSensores)
 {
 	super(nom,ap,nomUsuario,contra);
 	tipoDocumento = tipoDoc;
@@ -107,6 +111,7 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	double longitud = unaLongitud;
 	posicion = new Posicion(latitud, longitud);
 	simplexManager = new SimplexManager();
+	sensores = unosSensores;
 }
 
 //SIMPLEX//
