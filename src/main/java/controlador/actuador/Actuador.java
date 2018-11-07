@@ -3,8 +3,16 @@ package controlador.actuador;
 import dispositivo.Inteligente;
 
 
-public interface Actuador {
+public abstract class Actuador {
 
-	public void actuar(Inteligente unDispositivo);
+	Inteligente dispositivo;
+
+	public Actuador(Inteligente disp){
+
+		dispositivo = disp;
+
+	}
+
+	public void actuar(){};
 
 }

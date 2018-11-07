@@ -4,9 +4,17 @@ import dispositivo.Inteligente;
 
 
 
-public class ApagarDisp implements Actuador{
+public class ApagarDisp extends Actuador{
 
-	public void actuar(Inteligente dispositivo) {
+	String nombreApagar;
+
+	public ApagarDisp(String nombre, Inteligente disp)
+	{
+		super(disp);
+		nombreApagar = nombre;
+	}
+
+	public void actuar() {
 		dispositivo.apagar();
 	}
 }

@@ -5,9 +5,9 @@ import controlador.Sensor;
 
 public class Menor extends Condicion {
 
-public Menor(Double valor, Regla unaRegla, Sensor sensorAObservar)
+public Menor(String nombreCondicion, Double valor, Regla unaRegla, Sensor sensorAObservar)
 {
-    super(valor, unaRegla, sensorAObservar);
+    super(nombreCondicion, valor, unaRegla, sensorAObservar);
 }
 
 public void Update()  {

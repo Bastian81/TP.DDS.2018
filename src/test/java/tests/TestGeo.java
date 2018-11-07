@@ -6,6 +6,7 @@ import estado.Estado;
 import general.Cliente;
 import geoposicionamiento.Transformador;
 import geoposicionamiento.ZonaGeografica;
+import datos.JSONLoader;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,18 @@ import static org.junit.Assert.assertTrue;
 
 public class TestGeo {
 
-    Cliente c1; //almagroNorte, t1//
+    List<ZonaGeografica> zona;
+    String archivo =  "geo.json";
+
+
+    @Before
+    public void intialize(){
+
+        JSONLoader loader = new JSONLoader(archivo);
+        zona = loader.getZona();
+    }
+
+    /*Cliente c1; //almagroNorte, t1//
     Cliente c2; //villaCrespo, t3// //c2 esta mas cerca de t1 pero esta en otra zona//
     Transformador t1; //almagroNorte//
     Transformador t2; //almagroNorte//
@@ -71,10 +83,17 @@ public class TestGeo {
         villaCrespo.agregarTransformador(t3);
 
         c1.asignarTransformador(zonasTest);
-        c2.asignarTransformador(zonasTest);
+        c2.asignarTransformador(zonasTest);*/
 }
 
-    @Test
+   /* @Test
+    public void testCantidadZonas() {
+
+        assertEquals(2, zona.size());
+
+    }*/
+
+    /*@Test
     public void test1(){
         assertEquals(2, almagroNorte.transformadores().size());
         assertEquals(1, villaCrespo.transformadores().size());
@@ -96,8 +115,8 @@ public class TestGeo {
     @Test
     public void test4(){
         assertEquals(5.67f, t1.getConsumo(), 0.00f);
-    }
-}
+    }*/
+
 /*
 c2 esta:
  a 0.917 de almagroNorte (afuera)

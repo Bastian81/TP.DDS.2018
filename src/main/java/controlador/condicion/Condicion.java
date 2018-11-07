@@ -6,13 +6,15 @@ import controlador.Sensor;
 
 public abstract class Condicion extends Observer {
 
+    String nombre;
     Double valorCondicionante;
     boolean estadoCondicion = false;
     Regla miRegla;
 
-public Condicion(Double valor, Regla unaRegla, Sensor sensorAObservar)
+public Condicion(String nombreCondicion, Double valor, Regla unaRegla, Sensor sensorAObservar)
 {
     super(sensorAObservar);
+    nombre = nombreCondicion;
     valorCondicionante = valor;
     miRegla = unaRegla;
     unaRegla.agregarCondicion(this);

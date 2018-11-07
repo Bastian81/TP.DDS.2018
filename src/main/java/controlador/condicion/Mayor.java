@@ -5,9 +5,9 @@ import controlador.Sensor;
 
 public class Mayor extends Condicion {
 
-public Mayor(Double valor, Regla unaRegla, Sensor sensorAObservar)
+public Mayor(String nombreCondicion, Double valor, Regla unaRegla, Sensor sensorAObservar)
 {
-    super(valor, unaRegla, sensorAObservar);
+    super(nombreCondicion, valor, unaRegla, sensorAObservar);
 }
 
 public void Update()  {

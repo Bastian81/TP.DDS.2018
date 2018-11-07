@@ -1,47 +1,91 @@
+//reglas
 [
   {
-    "mayores": [
-      {
-        "valorCondicionante": 20
-        ;
-        "miRegla": [
-          {
-            "inteligente": [
-              {
-                "nombre": "heladera",
-                "consumo": 5.67f,
-                "nroSerial": 1,
-                "macAddress": (byte)1,
-                "estado": on
-              }
-            ]
-          }
-        ],
-        "sensor"
-      }
-    ]
+    "nombre": "apagarPorTempYMov"
   },
   {
-    "menores": [
+    "nombre": "apagarPorTempYMov",
+    "actuadores": [],
+    "condiciones":
+    [
       {
-        "valorCondicionante": 3
-        ;
-        "miRegla": [
+        "mayor": [
           {
-            "inteligente": [
-              {
-                "nombre": "heladera",
-                "consumo": 5.67f,
-                "nroSerial": 1,
-                "macAddress": (byte)1,
-                "estado": on
-              }
-            ]
+            "nombre": "tempM20",
+            "valorCondicionante": 20.0,
+            "miRegla": "apagarPorTempYMov",
+            "sensor": {
+              "nombre": "sensorTemp"
+            }
           }
         ],
-        "sensor"
+        "igual": [
+          {
+            "nombre": "mov0",
+            "valorCondicionante": 0.0,
+            "miRegla": "apagarPorTemYMov",
+            "sensor": {
+              "nombre": "sensorMov"
+            }
+          }
+        ],
+        "menor": []
       }
+    ],
+    "dispositivo": {
+      "nombre": "heladera",
+      "consumo": 5.67f,
+      "nroSerial": 1,
+      "macAddress": (byte)1,
+      "estado": on
+    }
+  }
+],
+
+//condiciones
+
+[
+  {
+    "nombre":
+    [
+    {
+    "mayor": [
+    {
+    "nombre": "tempM20",
+    "valorCondicionante": 20.0,
+    "miRegla": "apagarPorTempYMov",
+    "sensor": {
+    "nombre": "sensorTemp"
+    }
+    }
+    ],
+    "igual": [
+    {
+    "nombre": "mov0",
+    "valorCondicionante": 0.0,
+    "miRegla": "apagarPorTemYMov",
+    "sensor": {
+    "nombre": "sensorMov"
+    }
+    }
+    ],
+    "menor": []
+    }
     ]
   }
-
 ]
+
+
+    /*"menor":
+    [
+      {
+        "nombre": "tempm18",
+        "valorCondicionante": 18.0,
+        "miRegla": "",
+        "sensor":
+        {
+          "nombre": "sensorTemp"
+        }
+      }
+    ]*/
+

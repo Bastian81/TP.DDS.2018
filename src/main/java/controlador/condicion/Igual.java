@@ -5,9 +5,9 @@ import controlador.Sensor;
 
 public class Igual extends Condicion{
 
-public Igual(Double valor, Regla unaRegla, Sensor sensorAObservar)
+public Igual(String nombreCondicion, Double valor, Regla unaRegla, Sensor sensorAObservar)
 {
-    super(valor, unaRegla, sensorAObservar);
+    super(nombreCondicion, valor, unaRegla, sensorAObservar);
 }
 
 public void Update()  {

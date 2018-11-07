@@ -1,0 +1,34 @@
+[
+  {
+  [
+    {
+      "nombre":
+      [
+        {
+          "mayor": [
+            {
+              "nombre": "tempM20",
+              "valorCondicionante": 20.0,
+              "miRegla": "apagarPorTempYMov",
+              "sensor": {
+                "nombre": "sensorTemp"
+              }
+            }
+          ],
+          "igual": [
+            {
+              "nombre": "mov0",
+              "valorCondicionante": 0.0,
+              "miRegla": "apagarPorTemYMov",
+              "sensor": {
+                "nombre": "sensorMov"
+              }
+            }
+          ],
+          "menor": []
+        }
+      ]
+    }
+  ]
+  }
+]

@@ -2,20 +2,31 @@ package controlador;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import controlador.condicion.Condicion;
 import dispositivo.Inteligente;
 import controlador.actuador.Actuador;
 
+import javax.persistence.*;
+
+@Entity
 public class Regla {
 
-    ArrayList<Actuador> actuadores = new ArrayList<Actuador>();
-    ArrayList<Condicion> condiciones = new ArrayList<Condicion>();
-    Inteligente dispositivo;
+    @Id
+    @GeneratedValue
+    int idRegla;
 
-public Regla (Inteligente unDispositivo) {
+    String nombre;
 
-    dispositivo = unDispositivo;
+    //@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    public List<Actuador> actuadores = new ArrayList<>();
+    //@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    public List<Condicion> condiciones = new ArrayList<>();
+
+public Regla (String nombreRegla, Inteligente unDispositivo) {
+
+    nombre = nombreRegla;
 
 }
 
@@ -38,7 +49,7 @@ public void actuar(){
 
     if( this.cumpleRegla() ) {
 
-        actuadores.forEach(actuador -> actuador.actuar(dispositivo));
+        actuadores.forEach(actuador -> actuador.actuar());
     }
 }
 }
