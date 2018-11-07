@@ -2,6 +2,8 @@ package general;
 
 import javax.persistence.*;
 
+
+//No usar para clase abstracta: @Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 public abstract class Usuario {
 
@@ -12,7 +14,7 @@ public abstract class Usuario {
 
 	@Id
 	@GeneratedValue
-			int adminId;
+	int adminId;
 
 	// Constructor
 	public Usuario(String nom, String ap, String nomUsuario, String contra)

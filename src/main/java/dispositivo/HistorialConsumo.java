@@ -5,12 +5,21 @@ import estado.Estado;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Entity
+@Table (name = "Historial_Consumo")
 public class HistorialConsumo {
 
+    @Id
+    @GeneratedValue
+    int id;
+
+    @Transient
     Estado estadoActual;
+
     DateTime fechaEstado;
 
     HistorialConsumo(Estado estadoActual, DateTime fechaEstado)

@@ -1,20 +1,18 @@
 package geoposicionamiento;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Embeddable
+@Table (name = "Posiciones")
 public class Posicion {
 
     public double latitud;
     public double longitud;
-
-    /*@Id
+/*
+    @Id
     @GeneratedValue
-    int idPosicion;*/
-
+    int idPosicion;
+*/
 public Posicion(){}
 
 public Posicion (double unaLatitud, double unaLongitud){

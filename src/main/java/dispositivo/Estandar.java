@@ -1,5 +1,10 @@
 package dispositivo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Estandares")
 public class Estandar extends Dispositivo{
     int horasPorDia;
     public Estandar(String nombre, Float consumo, int nroSerial,int horasPorDia)

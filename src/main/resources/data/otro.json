@@ -1,0 +1,36 @@
+[
+  {
+    "nombre": "Gladys",
+    "apellido": "Marks",
+    "username": "Trevino",
+    "password": "Orr",
+    "domicilio": "Calle 1",
+    "tipoDocumento": "DNI",
+    "documento": "123",
+    "telefonoContacto": 123,
+    "dispositivosInteligentes": [
+      {
+
+        "nombre": "Notebook",
+        "consumo": 37.32,
+        "estadoValue": 1
+      },
+      {
+
+        "nombre": "Tostadora",
+        "consumo": 6.78,
+        "estadoValue":  2
+      },
+      {
+
+        "nombre": "Notebook",
+        "consumo": 45.84,
+        "estadoValue": 2
+      },
+      {
+
+        "nombre": "Tostadora",
+        "consumo": 65.74,
+        "estadoValue": 2
+      }
+    ]}]

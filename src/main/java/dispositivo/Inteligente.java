@@ -1,17 +1,32 @@
 package dispositivo;
 import estado.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.joda.time.DateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-
+@Entity
+@Table (name = "Inteligentes")
 public class Inteligente extends Dispositivo {
 
+
     private byte macAddress;
+
+    @Transient
     private Estado estado;
+
+    @Transient
+    @NotFound (action= NotFoundAction.IGNORE)
     int estadoValue;
 
+    @Transient
     public List<HistorialConsumo> historialConsumo;
 
     public Inteligente(String nombre, Float consumo, int nroSerial, byte macAddress, Estado estado)

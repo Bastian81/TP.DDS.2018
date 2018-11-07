@@ -9,11 +9,13 @@ import org.joda.time.Months;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "Administradores")
 public class Administrador extends Usuario {
 
 	@Transient
 	//@Temporal
 			DateTime fechaDeAlta;
+
 
 	// Constructor
 

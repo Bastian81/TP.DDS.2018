@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table (name = "Transformadores")
 public class Transformador {
 
-    @OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL)
+    @Transient
     List<Cliente> clientes = new ArrayList<>();
 
     @Embedded

@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
+@Table (name = "Zonas_Geograficas")
 public class ZonaGeografica {
 
     String nombreZona;

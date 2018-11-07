@@ -9,6 +9,11 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import controlador.actuador.Actuador;
+import controlador.Sensor;
+import controlador.*;
+import controlador.condicion.*;
+import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
 import org.joda.time.DateTime;
 
@@ -43,7 +48,7 @@ public class JSONLoader
   }
 
 
-    public List<Cliente> getClientes()
+  public List<Cliente> getClientes()
     {
         List<Cliente> clientes = null;
 
@@ -64,25 +69,12 @@ public class JSONLoader
     {
         Type tipo = new TypeToken<List<Categoria>>(){}.getType();
         return gson.fromJson(reader, tipo);
-
     }
 
     public List<TipoDispositivo> getTiposDispositivo()
     {
         Type tipo = new TypeToken<List<TipoDispositivo>>(){}.getType();
         return gson.fromJson(reader, tipo);
-    }
-
-    //Armo esto para que se puedan levantar las fechas como DateTime
-    private Gson gsonInit()
-    {
-        return new GsonBuilder().registerTypeAdapter(DateTime.class, new JsonDeserializer<DateTime>() {
-            @Override
-            public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-                    throws JsonParseException {
-                return new DateTime(json.getAsString());
-            }
-        }).create();
     }
 
     public List<ZonaGeografica> getZona()
@@ -102,4 +94,45 @@ public class JSONLoader
         return zonas;
     }
 
+    public List<Actuador> getActuadores()
+    {
+        Type tipo = new TypeToken<List<Actuador>>(){}.getType();
+        return gson.fromJson(reader, tipo);
+    }
+
+    public List<Sensor> getSensores()
+    {
+        Type tipo = new TypeToken<List<Sensor>>(){}.getType();
+        return gson.fromJson(reader, tipo);
+    }
+
+    public List<Regla> getReglas()
+    {
+        Type tipo = new TypeToken<List<Regla>>(){}.getType();
+        return gson.fromJson(reader, tipo);
+    }
+    public List<Condicion> getCondiciones()
+    {
+        Type tipo = new TypeToken<List<Condicion>>(){}.getType();
+        return gson.fromJson(reader, tipo);
+    }
+
+    public List<Inteligente> getInteligentes()
+    {
+        Type tipo = new TypeToken<List<Inteligente>>(){}.getType();
+        return gson.fromJson(reader, tipo);
+    }
+
+
+    //Armo esto para que se puedan levantar las fechas como DateTime
+    private Gson gsonInit()
+    {
+        return new GsonBuilder().registerTypeAdapter(DateTime.class, new JsonDeserializer<DateTime>() {
+            @Override
+            public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                    throws JsonParseException {
+                return new DateTime(json.getAsString());
+            }
+        }).create();
+    }
 }

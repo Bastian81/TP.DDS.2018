@@ -17,31 +17,66 @@ import controlador.Sensor;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "Clientes")
 public class Cliente extends Usuario
 {
+/*
+Agregar @NotFound (action=NotFoundAction.IGNORE) si puede no haber relacion en MNY->SMTHING ->define modalidad
+Tambien ver de agregar en ej @OneToMany (cascade=CascadeType.PERSIST) -> refresca lista si se actualizo
+sin necesidad de volver a persistir la entidad cliente en este caso */
+
 	int puntos;
     String tipoDocumento;
     int documento;
     int telefonoContacto;
     String domicilio;
-    @Transient
-    Categoria categoria;
-    ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
-    ArrayList<Estandar> dipositivosEstandares;
-    DateTime fechaDeAlta;
-    ArrayList<Sensor> sensores;
 
-    @Embedded
+	double latitud = 0;
+	double longitud = 0;
+
+    //@OneToOne
+	//		@JoinColumn (name = "Categoria ID")
+    @Transient
+	Categoria categoria;
+
+    /*@OneToMany
+			@JoinTable (
+					name = "Dispositivos por Cliente",
+					joinColumns = @JoinColumn(name = "Cliente ID"),
+					inverseJoinColumns = @JoinColumn(name = "Inteligente ID")
+			)*/
+    @Transient
+    ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
+
+    //@OneToMany
+	//		@JoinColumn (name = "Estandares ID")
+    @Transient
+	ArrayList<Estandar> dipositivosEstandares;
+
+    DateTime fechaDeAlta;
+
+   // @OneToMany
+	//		@JoinColumn (name = "Sensores ID")
+   @Transient
+	ArrayList<Sensor> sensores;
+
+    //@OneToOne
+	//@JoinColumn (name = "Posicion ID")
+	@Transient
 	Posicion posicion;
+
+
 	private transient SimplexManager simplexManager;
+
+
+
+	//@ManyToOne(fetch = FetchType.LAZY)
+	@Transient
+	public Transformador transformador;
 
 	public ArrayList<Inteligente> getDispositivosInteligentes() {
 		return dispositivosInteligentes;
 	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	public Transformador transformador;
-
 	//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud)
 {
@@ -53,8 +88,8 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	DateTime alta = new DateTime();
 	this.fechaDeAlta = alta;
 	puntos = 0;
-	double latitud = unaLatitud;
-	double longitud = unaLongitud;
+	latitud = unaLatitud;
+	longitud = unaLongitud;
 	posicion = new Posicion(latitud, longitud);
 	simplexManager = new SimplexManager();
 }

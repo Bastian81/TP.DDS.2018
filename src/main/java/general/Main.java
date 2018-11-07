@@ -3,6 +3,7 @@ package general;
 import datos.JSONLoader;
 import datos.Persistencia;
 import datos.TipoDispositivo;
+import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
 
 import java.util.List;
@@ -11,28 +12,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*JSONLoader loader = new JSONLoader( "categorias.json");
-        List<Categoria> categorias = loader.getCategorias();
+        /*
 
-        Persistencia persistencia = new Persistencia();
-        categorias.forEach(categoria -> persistencia.persistir(categoria));
+        Forma para instaciar y almacenar las clases:
+        1° Leo el JSON y guardo todos los valores leidos de la lista en una variable de tipo List
+        2° Persisto cada elemento de esa lista con un foreach
 
-        JSONLoader loader2 = new JSONLoader("administradores.json");
-        List<Administrador> admin = loader2.getAdministradores();
-
-
-        loader = new JSONLoader( "tiposDispositivo.json");
-        List<TipoDispositivo> tiposDispositivos = loader.getTiposDispositivo();
-
-        Persistencia persistenciaDisp = new Persistencia();
-        tiposDispositivos.forEach(tipo -> persistenciaDisp.persistir(tipo));*/
-
+         */
         JSONLoader loader;
 
         loader = new JSONLoader( "geo.json");
         List<ZonaGeografica> zonasGeograficas = loader.getZona();
 
         Persistencia persistenciaZona = new Persistencia();
+        zonasGeograficas.forEach((zona -> persistenciaZona.persistir(zona)));
 
         loader = new JSONLoader("administradores.json");
         List<Administrador> admin = loader.getAdministradores();
@@ -43,14 +36,26 @@ public class Main {
         loader = new JSONLoader( "categorias.json");
         List<Categoria> categorias = loader.getCategorias();
 
-        Persistencia persistencia = new Persistencia();
-        categorias.forEach(categoria -> persistencia.persistir(categoria));
+        Persistencia persistenciaCategoria = new Persistencia();
+        categorias.forEach(categoria -> persistenciaCategoria.persistir(categoria));
 
         loader = new JSONLoader( "tiposDispositivo.json");
         List<TipoDispositivo> tiposDispositivos = loader.getTiposDispositivo();
 
         Persistencia persistenciaDisp = new Persistencia();
         tiposDispositivos.forEach(tipo -> persistenciaDisp.persistir(tipo));
+
+        loader = new JSONLoader("clientes.json");
+        List<Cliente> clientes = loader.getClientes();
+
+        Persistencia persistenciaClientes = new Persistencia();
+        clientes.forEach(cliente -> persistenciaClientes.persistir(cliente));
+
+        loader = new JSONLoader("inteligentes.json");
+        List<Inteligente> inteligentes = loader.getInteligentes();
+
+        Persistencia persistenciaInteligentes = new Persistencia();
+        inteligentes.forEach(inteligente -> persistenciaInteligentes.persistir(inteligente));
 
     }
 }

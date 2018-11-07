@@ -1,6 +1,16 @@
 package dispositivo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Dispositivo {
+
+
+    @Id
+            @GeneratedValue
+    int id;
 
     private String nombre;
     private int nroSerial;

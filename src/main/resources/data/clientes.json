@@ -15,16 +15,19 @@
 "estadoValue": 1
 },
 {
+
 "nombre": "Tostadora",
 "consumo": 6.78,
 "estadoValue":  2
 },
 {
+
 "nombre": "Notebook",
 "consumo": 45.84,
 "estadoValue": 2
 },
 {
+
 "nombre": "Tostadora",
 "consumo": 65.74,
 "estadoValue": 2
@@ -41,17 +44,19 @@
 "documento": "123",
 "telefonoContacto": 123,
 "dispositivosInteligentes": [
-{
-"nombre": "Tostadora",
-"consumo": 82.15,
-"estadoValue": 1
-},
-{
-"nombre": "Microondas",
-"consumo": 88.75,
-"estadoValue": 0
-}
-]
+   {
+
+     "nombre": "Tostadora",
+     "consumo": 82.15,
+     "estadoValue": 1
+   },
+   {
+
+     "nombre": "Microondas",
+     "consumo": 88.75,
+     "estadoValue": 0
+   }
+ ]
 },
 {
 "nombre": "Mercedes",
@@ -65,21 +70,25 @@
 "estadoValue": 1
 },
 {
+
 "nombre": "Notebook",
 "consumo": 37.5,
 "estadoValue": 1
 },
 {
+
 "nombre": "Notebook",
 "consumo": 63.1,
 "estadoValue": 2
 },
 {
+
 "nombre": "Tostadora",
 "consumo": 32.42,
 "estadoValue": 0
 },
 {
+
 "nombre": "Horno",
 "consumo": 10000,
 "estadoValue": 1
@@ -93,11 +102,13 @@
 "password": "Jacobson",
 "dispositivosInteligentes": [
 {
+
 "nombre": "Microondas",
 "consumo": 80.36,
 "estadoValue": 2
 },
 {
+
 "nombre": "Microondas",
 "consumo": 49.92,
 "estadoValue": 1
@@ -111,6 +122,7 @@
 "password": "Potter",
 "dispositivosInteligentes": [
 {
+
 "nombre": "Microondas",
 "consumo": 20.8,
 "estadoValue": 0
@@ -124,21 +136,25 @@
 "password": "Roslyn",
 "dispositivosInteligentes": [
 {
+
 "nombre": "Microondas",
 "consumo": 89.39,
 "estadoValue": 1
 },
 {
+
 "nombre": "Notebook",
 "consumo": 53.9,
 "estadoValue": 1
 },
 {
+
 "nombre": "Microondas",
 "consumo": 5.93,
 "estadoValue": 1
 },
 {
+
 "nombre": "Notebook",
 "consumo": 48.47,
 "estadoValue": 0
@@ -152,6 +168,7 @@
 "password": "Hurst",
 "dispositivosInteligentes": [
 {
+
 "nombre": "Notebook",
 "consumo": 72.47,
 "estadoValue": 1
