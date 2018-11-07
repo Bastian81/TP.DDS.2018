@@ -1,9 +1,8 @@
 package controlador;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import general.Cliente;
+
+import javax.persistence.*;
 
 @Entity
 @Table (name = "Sensores")
@@ -13,6 +12,9 @@ public class Sensor extends Subject {
     @GeneratedValue
     int id;
     String nombre;
+
+    @ManyToOne
+    Cliente cliente;
 
     public Sensor(String nombreSensor) {
 

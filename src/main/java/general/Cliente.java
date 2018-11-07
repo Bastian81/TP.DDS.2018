@@ -60,20 +60,20 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 	@OneToMany
 			@JoinColumn(name = "dispositivos")
 	*/
-	@Transient
-    ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();
+	@OneToMany(cascade=CascadeType.ALL)
+    List<Inteligente> dispositivosInteligentes = new ArrayList<>();
 
     //@OneToMany
 	//		@JoinColumn (name = "Estandares ID")
-    @Transient
-	ArrayList<Estandar> dipositivosEstandares;
+	@OneToMany(cascade=CascadeType.ALL)
+	List<Estandar> dipositivosEstandares = new ArrayList<>();
 
     DateTime fechaDeAlta;
 
    // @OneToMany
 	//		@JoinColumn (name = "Sensores ID")
-   @Transient
-	ArrayList<Sensor> sensores;
+   @OneToMany(cascade=CascadeType.ALL)
+   List<Sensor> sensores = new ArrayList<>();
 
     //@OneToOne
 	//@JoinColumn (name = "Posicion ID")
@@ -86,10 +86,10 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 
 
 	//@ManyToOne(fetch = FetchType.LAZY)
-	@Transient
+	@ManyToOne
 	public Transformador transformador;
 
-	public ArrayList<Inteligente> getDispositivosInteligentes() {
+	public List<Inteligente> getDispositivosInteligentes() {
 		return dispositivosInteligentes;
 	}
 	//Constructor//

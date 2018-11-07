@@ -6,6 +6,9 @@
     "password": "Orr",
     "domicilio": "Calle 1",
     "tipoDocumento": "DNI",
+    "sensores": [{
+      "nombre": "medicion"
+    }],
     "documento": "123",
     "telefonoContacto": 123,
     "posicion": {

@@ -1,8 +1,8 @@
 package dispositivo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import general.Cliente;
+
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class Dispositivo {
@@ -11,6 +11,9 @@ public abstract class Dispositivo {
     @Id
             @GeneratedValue
     int id;
+
+    @ManyToOne
+    public Cliente cliente;
 
     private String nombre;
     private int nroSerial;

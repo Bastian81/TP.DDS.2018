@@ -12,7 +12,7 @@ import java.util.List;
 public class Transformador {
 
     //@OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL)
-    @Transient
+    @OneToMany(cascade=CascadeType.ALL)
     List<Cliente> clientes = new ArrayList<>();
 
     @Embedded
