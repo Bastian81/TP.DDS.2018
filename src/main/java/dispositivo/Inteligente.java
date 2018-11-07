@@ -17,14 +17,14 @@ public class Inteligente extends Dispositivo {
 
     private byte macAddress;
 
-    @Transient
+    @ManyToOne
     private Estado estado;
 
     @Transient
     @NotFound (action= NotFoundAction.IGNORE)
     int estadoValue;
 
-    @Transient
+    @OneToMany(cascade=CascadeType.ALL)
     public List<HistorialConsumo> historialConsumo;
 
 

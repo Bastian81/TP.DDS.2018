@@ -22,6 +22,9 @@ public class HistorialConsumo {
 
     DateTime fechaEstado;
 
+    @ManyToOne
+    Inteligente inteligente;
+
     HistorialConsumo(Estado estadoActual, DateTime fechaEstado)
     {
      this.estadoActual = estadoActual;
