@@ -17,7 +17,7 @@ public class ZonaGeografica {
 
     double radioZona;
 
-    @OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL)
     //@JoinColumn(name = "idTrasnformador")
     public List<Transformador> transformadores = new ArrayList<>();
 

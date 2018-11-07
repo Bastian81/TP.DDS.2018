@@ -23,7 +23,7 @@ public class Transformador {
     //@Column(name = "idTransformador", unique = true)
     int idTrasformador;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     //@JoinColumn(name = "zonaId", nullable = false)
     public ZonaGeografica zona;
 

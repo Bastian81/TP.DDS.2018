@@ -93,9 +93,6 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 		return dispositivosInteligentes;
 	}
 
-
-	public List<Sensor> sensores = new ArrayList<>();
-
 	//Constructor//
 public Cliente(String nom, String ap, String nomUsuario, String contra, String direccion,String tipoDoc,int doc, int tel, double unaLatitud, double unaLongitud, ArrayList<Sensor> unosSensores)
 {
