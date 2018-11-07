@@ -33,13 +33,20 @@ public class Main {
         Persistencia persistenciaAdmin = new Persistencia();
         admin.forEach((administrador -> persistenciaAdmin.persistir(administrador)));
 
-
+/*
         loader = new JSONLoader( "categorias.json");
         List<Categoria> categorias = loader.getCategorias();
 
         Persistencia persistenciaCategoria = new Persistencia();
         categorias.forEach(categoria -> persistenciaCategoria.persistir(categoria));
 
+
+*/
+        loader = new JSONLoader( "categorias.json");
+        List<Categoria> categorias = loader.getCategorias();
+
+        Persistencia persistenciaCategoria = new Persistencia();
+        categorias.forEach(categoria -> persistenciaCategoria.persistir(categoria));
 
         loader = new JSONLoader( "tiposDispositivo.json");
         List<TipoDispositivo> tiposDispositivos = loader.getTiposDispositivo();
@@ -52,6 +59,8 @@ public class Main {
 
         Persistencia persistenciaClientes = new Persistencia();
         clientes.forEach(cliente -> persistenciaClientes.persistir(cliente));
+
+
 
             //Esto no va a estar mas
         /*

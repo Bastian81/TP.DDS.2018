@@ -33,12 +33,13 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
     int telefonoContacto;
     String domicilio;
 
-
-	@Transient
+/*
+	@ManyToOne
+			@JoinColumn(name = "Categoria_ID")
+			*/
+	@ManyToOne( cascade={CascadeType.REFRESH,CascadeType.MERGE,CascadeType.PERSIST})
+		@JoinColumn( name = "categoria_id")
 	Categoria categoria;
-
-    //@OneToOne
-	//		@JoinColumn (name = "Categoria ID")
 
 
 	/*		@JoinTable (
@@ -54,6 +55,10 @@ sin necesidad de volver a persistir la entidad cliente en este caso */
 
 	)
 	@JoinColumn (name = "Dipositivo ID")
+	*/
+	/*
+	@OneToMany
+			@JoinColumn(name = "dispositivos")
 	*/
 	@Transient
     ArrayList<Inteligente> dispositivosInteligentes = new ArrayList<>();

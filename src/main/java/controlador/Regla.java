@@ -20,8 +20,10 @@ public class Regla {
     String nombre;
 
     //@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    @Transient
     public List<Actuador> actuadores = new ArrayList<>();
     //@OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    @Transient
     public List<Condicion> condiciones = new ArrayList<>();
 
 public Regla (String nombreRegla, Inteligente unDispositivo) {

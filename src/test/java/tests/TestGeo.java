@@ -21,14 +21,14 @@ public class TestGeo {
     List<ZonaGeografica> zona;
     String archivo =  "geo.json";
 
-
+/*
     @Before
     public void intialize(){
 
         JSONLoader loader = new JSONLoader(archivo);
         zona = loader.getZona();
     }
-
+*/
     /*Cliente c1; //almagroNorte, t1//
     Cliente c2; //villaCrespo, t3// //c2 esta mas cerca de t1 pero esta en otra zona//
     Transformador t1; //almagroNorte//
