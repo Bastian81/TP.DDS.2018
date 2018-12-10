@@ -6,6 +6,7 @@ import datos.TipoDispositivo;
 import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -19,7 +20,7 @@ public class Main {
         2° Persisto cada elemento de esa lista con un foreach
 
          */
-        JSONLoader loader;
+/*        JSONLoader loader;
 
         loader = new JSONLoader( "geo.json");
         List<ZonaGeografica> zonasGeograficas = loader.getZona();
@@ -32,7 +33,7 @@ public class Main {
 
         Persistencia persistenciaAdmin = new Persistencia();
         admin.forEach((administrador -> persistenciaAdmin.persistir(administrador)));
-
+*/
 /*
         loader = new JSONLoader( "categorias.json");
         List<Categoria> categorias = loader.getCategorias();
@@ -42,7 +43,7 @@ public class Main {
 
 
 */
-        loader = new JSONLoader( "categorias.json");
+/*       loader = new JSONLoader( "categorias.json");
         List<Categoria> categorias = loader.getCategorias();
 
         Persistencia persistenciaCategoria = new Persistencia();
@@ -59,6 +60,9 @@ public class Main {
 
         Persistencia persistenciaClientes = new Persistencia();
         clientes.forEach(cliente -> persistenciaClientes.persistir(cliente));
+*/
+
+        //spark
 
 
 
@@ -70,5 +74,6 @@ public class Main {
         Persistencia persistenciaInteligentes = new Persistencia();
         inteligentes.forEach(inteligente -> persistenciaInteligentes.persistir(inteligente));
         */
+
     }
 }
