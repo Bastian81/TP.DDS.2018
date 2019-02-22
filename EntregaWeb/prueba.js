@@ -16,6 +16,4 @@ function loguearUsuario() {
 	alert(clientes);
 }
 
-
-
 //btn-logusuario
