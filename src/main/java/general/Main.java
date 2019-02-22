@@ -5,6 +5,7 @@ import datos.Persistencia;
 import datos.TipoDispositivo;
 import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
+import web.init_web;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
+        init_web.abrirURL("www.google.com");
+
 
         /*
 
@@ -61,8 +65,6 @@ public class Main {
         Persistencia persistenciaClientes = new Persistencia();
         clientes.forEach(cliente -> persistenciaClientes.persistir(cliente));
 */
-
-        //spark
 
 
 

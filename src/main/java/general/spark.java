@@ -1,4 +1,4 @@
-package general;
+/*package general;
 
 import static spark.Spark.*;
 
@@ -6,9 +6,9 @@ public class spark {
 
     public static void main(String args[]){
 
-        /*get("/gian/*", (req, res) -> {
+        get("/gian/*", (req, res) -> {
             return "gian sos: " + req.splat().length;
-        });*/
+        });
         //delete("/hello", (red, res) -> {
         //    return "gian";
         //});
@@ -28,4 +28,4 @@ public class spark {
 
     }
 
-}
+}*/

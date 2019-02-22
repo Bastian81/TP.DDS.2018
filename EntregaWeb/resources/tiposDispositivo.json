@@ -1,0 +1,50 @@
+[		{
+			"nombre": "Aire Acondicionado",
+			"minimo": "90",
+			"maximo": "360"
+
+		},
+		{
+			"nombre": "Lampara",
+			"minimo": "90",
+			"maximo": "360"
+
+		},
+		{
+			"nombre": "Televisor (LED/LCD/Tubo)",
+			"minimo": "90",
+			"maximo": "360"
+
+		},
+		{
+			"nombre": "Lavarropas",
+			"minimo": "6",
+			"maximo": "30"
+
+		},
+		{
+			"id":4,
+			"nombre": "Computadora",
+			"minimo": "60",
+			"maximo": "360"
+
+		},
+		{
+			"nombre": "Microondas",
+			"minimo": "3",
+			"maximo": "15"
+
+		},
+		{
+			"nombre": "Plancha",
+			"minimo": "3",
+			"maximo": "30"
+
+		},
+		{
+			"nombre": "Ventilador",
+			"minimo": "120",
+			"maximo": "360"
+		}
+
+]

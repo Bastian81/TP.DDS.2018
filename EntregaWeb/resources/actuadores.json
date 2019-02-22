@@ -1,0 +1,32 @@
+[
+  {
+    "nombreApagar": "apagarHeladera",
+    "dispositivo": {
+      "nombre": "heladera",
+      "consumo": 5.67f,
+      "nroSerial": 1,
+      "macAddress": (byte)1,
+      "estado": on
+    }
+  },
+  {
+    "nombreEncender": "encenderHeladera",
+    "dispositivo": {
+      "nombre": "heladera",
+      "consumo": 5.67f,
+      "nroSerial": 1,
+      "macAddress": (byte)1,
+      "estado": on
+    }
+  },
+  {
+    "nombreAhorro": "ahorroHeladera",
+    "dispositivo": {
+      "nombre": "heladera",
+      "consumo": 5.67f,
+      "nroSerial": 1,
+      "macAddress": (byte)1,
+      "estado": on
+    }
+  }
+]
