@@ -33,12 +33,20 @@ public ZonaGeografica(String nombre, double unaLatitud, double unaLongitud, doub
     double longitud = unaLongitud;
     posicionZona = new Posicion(latitud, longitud);
     radioZona = radio;
-
 }
+    //Asi lo vamos a persistir
+    public ZonaGeografica(String nombre, double radio, Posicion zonaPosicion,List<Transformador> transformers) {
+
+        nombreZona = nombre;
+        posicionZona = zonaPosicion;
+        radioZona = radio;
+        transformadores = transformers;
+    }
 
 public Posicion getPosicion() {return posicionZona;}
 public double radioZona() {return radioZona;}
 public List<Transformador> transformadores() {return transformadores;}
+
 
     //Metodo para saber si un cliente pertenece a una zona geografica
 public Boolean clientePertenece(Cliente unCliente)

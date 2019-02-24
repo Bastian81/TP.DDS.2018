@@ -27,6 +27,8 @@ public class Transformador {
     //@JoinColumn(name = "zonaId", nullable = false)
     public ZonaGeografica zona;
 
+    String nombreTransformador;
+
 public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
 
     double latitud = unaLatitud;
@@ -35,6 +37,14 @@ public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
     //idTrasformador = id;
 
 }
+
+    public Transformador ( String nombreTrans, Posicion posicion, List<Cliente> clientes)
+    {
+
+        this.posicion = posicion;
+        nombreTransformador = nombreTrans;
+        this.clientes = clientes;
+    }
 
 public Posicion getPosicion () {
         return posicion;

@@ -111,6 +111,22 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	sensores = unosSensores;
 }
 
+	public Cliente(String nom, String ap, String nomUsuario, String contra, int puntos, String tipoDocumento, int documento, int telefonoContacto, String domicilio, Categoria categoria, List<Inteligente> dispositivosInteligentes, List<Estandar> dipositivosEstandares, DateTime fechaDeAlta, List<Sensor> sensores, Posicion posicion, SimplexManager simplexManager)
+	{
+		super(nom, ap, nomUsuario, contra);
+		this.puntos = puntos;
+		this.tipoDocumento = tipoDocumento;
+		this.documento = documento;
+		this.telefonoContacto = telefonoContacto;
+		this.domicilio = domicilio;
+		this.categoria = categoria;
+		this.dispositivosInteligentes = dispositivosInteligentes;
+		this.dipositivosEstandares = dipositivosEstandares;
+		this.fechaDeAlta = fechaDeAlta;
+		this.sensores = sensores;
+		this.posicion = posicion;
+		this.simplexManager = simplexManager;
+	}
 //SIMPLEX//
 
 		public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)

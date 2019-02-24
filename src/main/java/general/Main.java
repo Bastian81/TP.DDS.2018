@@ -1,5 +1,8 @@
 package general;
 
+import Loader.CargadorJSONClase;
+import com.google.gson.reflect.TypeToken;
+import datos.ControlJSON;
 import datos.JSONLoader;
 import datos.Persistencia;
 import datos.TipoDispositivo;
@@ -7,6 +10,8 @@ import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
 import web.init_web;
 
+import java.io.File;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +19,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        init_web.abrirURL("www.google.com");
+        CargadorJSONClase nuevoCargador = new CargadorJSONClase();
+
+        nuevoCargador.recargar();
+
+        //init_web.abrirURL("www.google.com");
+/*
+        ControlJSON json = new ControlJSON();
+        List<Cliente> clientes;
+        Type tipo = new TypeToken<List<Cliente>>() {
+        }.getType();
+        clientes = json.leerJSON("clientes.json",tipo);
+
+        Cliente nuevoCliente = new Cliente("Fernando","Gomez","JuliaG123","contra123",17,"DNI",17856231,1166443322,"juncal 300",null,null,null,null,null,null,null);
+        clientes.add(nuevoCliente);
+
+        for(Cliente clie: clientes)
+        {
+            System.out.println(clie.dispositivosInteligentes);
+        }
+
+        json.crearJSON("nuevo2.0.json",clientes,tipo);
+        */
+
 
 
         /*

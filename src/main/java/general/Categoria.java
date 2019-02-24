@@ -25,7 +25,6 @@ public class Categoria {
 		consumoMensualMax = consumoMax;
 		cargoMensualFijo = cargoFijo;
 		cargoMensualVar = cargoVar;
-		
 	}
 	
 	// getters 
