@@ -12,11 +12,9 @@ public class AhorrarDisp extends Actuador{
 	@GeneratedValue
 	int idAhorro;*/
 
-	String nombreAhorro;
 
-	public AhorrarDisp(String nombre, Inteligente disp){
-		super(disp);
-		nombreAhorro = nombre;
+	public AhorrarDisp(Inteligente dispositivo, String nombre, int id) {
+		super(dispositivo, nombre, id);
 	}
 
 	public void actuar() {

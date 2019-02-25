@@ -1,8 +1,14 @@
 [
   {
-    "nombre": "sensorTemp"
+    "nombre": "sensorTemp",
+    "cliente": {
+
+    }
   },
   {
-    "nombre": "sensorMov"
+    "nombre": "sensorMov",
+    "cliente": {
+
+    }
   }
 ]

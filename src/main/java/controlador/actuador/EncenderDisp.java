@@ -6,11 +6,8 @@ import dispositivo.Inteligente;
 
 public class EncenderDisp extends Actuador{
 
-	String nombreEncender;
-
-	public EncenderDisp(String nombre, Inteligente disp){
-		super(disp);
-		nombreEncender = nombre;
+	public EncenderDisp(Inteligente dispositivo, String nombre, int id) {
+		super(dispositivo, nombre, id);
 	}
 
 	public void actuar() {

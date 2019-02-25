@@ -2,10 +2,14 @@ package estado;
 
 import dispositivo.Inteligente;
 
-public class Ahorro implements Estado {
+public class Ahorro extends Estado {
 
-    public void apagar(Inteligente dispInteligente) {dispInteligente.cambiarEstado(new Apagado());}
-    public void encender(Inteligente dispInteligente) {dispInteligente.cambiarEstado(new Encendido());}
+    public Ahorro(String nombre, int id) {
+        super(nombre, id);
+    }
+
+    public void apagar(Inteligente dispInteligente) {dispInteligente.cambiarEstado(new Apagado(nombre,id));}
+    public void encender(Inteligente dispInteligente) {dispInteligente.cambiarEstado(new Encendido(nombre,id));}
     public void modoAhorro(Inteligente dispInteligente) {}
 
     public Boolean estaEncendido() {return true;}

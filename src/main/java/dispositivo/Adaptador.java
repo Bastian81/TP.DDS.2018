@@ -4,7 +4,7 @@ import estado.Estado;
 
 public class Adaptador extends Inteligente {
     Estandar dispositivoEstandar;
-    public Adaptador(String nombre, Float consumo, int nroSerial, byte macAddress, Estado estado)
+    public Adaptador(String nombre, Float consumo, int nroSerial, String macAddress, Estado estado)
     {
         super(nombre,consumo,nroSerial,macAddress,estado);
     }

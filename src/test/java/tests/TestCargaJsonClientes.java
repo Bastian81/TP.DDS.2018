@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import dispositivo.Inteligente;
-import estado.EstadoBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +26,6 @@ public class TestCargaJsonClientes {
 	@Before
 	public void intialize(){
 
-        EstadoBuilder estadoBuilder = new EstadoBuilder();
 
 		clientes =  new JSONLoader(archivoClientes).getClientes();
         this.categorias =  new JSONLoader(archivoCategorias).getCategorias();
@@ -38,7 +36,7 @@ public class TestCargaJsonClientes {
 		{
 			cliente.setCategoria(categorias);
 			List<Inteligente> dispositivos = cliente.getDispositivosInteligentes();
-			dispositivos.forEach(dispositivo->dispositivo.instanciarEstado());
+			//dispositivos.forEach(dispositivo->dispositivo.instanciarEstado());
 		}
 
 

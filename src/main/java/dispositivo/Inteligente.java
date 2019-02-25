@@ -15,25 +15,21 @@ import java.util.stream.Collectors;
 public class Inteligente extends Dispositivo {
 
 
-    private byte macAddress;
-
+    private String macAddress;
     @ManyToOne
     private Estado estado;
-
-    @Transient
-    @NotFound (action= NotFoundAction.IGNORE)
-    int estadoValue;
-
     @OneToMany(cascade=CascadeType.ALL)
     public List<HistorialConsumo> historialConsumo;
 
+    int idCliente;
 
-    public Inteligente(String nombre, Float consumo, int nroSerial, byte macAddress, Estado estado)
+
+    public Inteligente(String nombre, Float consumo, int nroSerial, String macAddress, Estado estado)
     {
         super(nombre,consumo,nroSerial);
         this.macAddress = macAddress;
         this.estado = estado;
-        this.historialConsumo = new ArrayList<HistorialConsumo>();
+        this.historialConsumo = new ArrayList<>();
     }
 
 
@@ -60,7 +56,6 @@ public class Inteligente extends Dispositivo {
     {
         estado.apagar(this);
     }
-
     public void encender()
     {
         estado.encender(this);
@@ -69,6 +64,7 @@ public class Inteligente extends Dispositivo {
     {
         estado.modoAhorro(this);
     }
+
     public Boolean estaEncendido() {return estado.estaEncendido();}
 
     
@@ -110,8 +106,5 @@ public class Inteligente extends Dispositivo {
     public Boolean esInt() {return true;}
     public int puntos() {return 15;}
 
-    public void instanciarEstado() {
-        EstadoBuilder estadoBuilder = new EstadoBuilder();
-        estado = estadoBuilder.getStateInstance(estadoValue);
-    }
+
 }
