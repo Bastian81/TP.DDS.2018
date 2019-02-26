@@ -26,13 +26,27 @@ public class Regla {
     @Transient
     public List<Condicion> condiciones = new ArrayList<>();
 
-public Regla (String nombreRegla, Inteligente unDispositivo) {
+    int nroSerialDisp;
 
-    nombre = nombreRegla;
+    public Regla (String nombreRegla, Inteligente unDispositivo) {
+        nombre = nombreRegla;
+    }
 
-}
+    public Regla(String nombre, List<Actuador> actuadores, List<Condicion> condiciones, int nroSerialDisp) {
 
-public void agregarCondicion(Condicion condicion) {
+        this.nombre = nombre;
+        this.actuadores = actuadores;
+        this.condiciones = condiciones;
+        this.nroSerialDisp = nroSerialDisp;
+    }
+
+    public Regla(int idRegla, String nombre, int nroSerialDisp) {
+        this.idRegla = idRegla;
+        this.nombre = nombre;
+        this.nroSerialDisp = nroSerialDisp;
+    }
+
+    public void agregarCondicion(Condicion condicion) {
 
     condiciones.add(condicion);
 }
@@ -54,4 +68,44 @@ public void actuar(){
         actuadores.forEach(actuador -> actuador.actuar());
     }
 }
+
+    public int getIdRegla() {
+        return idRegla;
+    }
+
+    public void setIdRegla(int idRegla) {
+        this.idRegla = idRegla;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Actuador> getActuadores() {
+        return actuadores;
+    }
+
+    public void setActuadores(List<Actuador> actuadores) {
+        this.actuadores = actuadores;
+    }
+
+    public List<Condicion> getCondiciones() {
+        return condiciones;
+    }
+
+    public void setCondiciones(List<Condicion> condiciones) {
+        this.condiciones = condiciones;
+    }
+
+    public int getNroSerialDisp() {
+        return nroSerialDisp;
+    }
+
+    public void setNroSerialDisp(int nroSerialDisp) {
+        this.nroSerialDisp = nroSerialDisp;
+    }
 }

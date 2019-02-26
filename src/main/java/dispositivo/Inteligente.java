@@ -32,6 +32,12 @@ public class Inteligente extends Dispositivo {
         this.historialConsumo = new ArrayList<>();
     }
 
+    public Inteligente(String nombre, Float consumo, int nroSerial, String nombreUsuario, String macAddress, Estado estado) {
+        super(nombre, consumo, nroSerial, nombreUsuario);
+        this.macAddress = macAddress;
+        this.estado = estado;
+        this.historialConsumo = new ArrayList<>();
+    }
 
     public HistorialConsumo ultimoLista() {
     	if(historialConsumo.isEmpty())
@@ -39,6 +45,7 @@ public class Inteligente extends Dispositivo {
     	else
     		return historialConsumo.get(historialConsumo.size() - 1);
     }
+
 
     public void cambiarEstado(Estado nuevoEstado)
     {
@@ -70,7 +77,6 @@ public class Inteligente extends Dispositivo {
     
     // Metodos para calcular el consumo
 
-
     public double getConsumoPorHoras(int cantidadHoras)             //Cuanto consumio en las ultimas horas
     {
         return consumoPeriodo(obtenerFechaAnterior(cantidadHoras),new DateTime());
@@ -79,6 +85,7 @@ public class Inteligente extends Dispositivo {
     {
         return new DateTime().plusHours(-cantHoras);
     }
+
 
     public double consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)       //Consumo comprendido entre dos periodos
     {
@@ -105,6 +112,38 @@ public class Inteligente extends Dispositivo {
 
     public Boolean esInt() {return true;}
     public int puntos() {return 15;}
+
+    public String getMacAddress() {
+        return macAddress;
+    }
+
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public List<HistorialConsumo> getHistorialConsumo() {
+        return historialConsumo;
+    }
+
+    public void setHistorialConsumo(List<HistorialConsumo> historialConsumo) {
+        this.historialConsumo = historialConsumo;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
 
 
 }

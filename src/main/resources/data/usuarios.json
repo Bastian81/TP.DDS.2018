@@ -1,0 +1,72 @@
+[
+  {
+    "nombre":"Gladys",
+    "apellido":"Marks",
+    "username":"Trevino",
+    "password":"Orr",
+    "adminId":0
+  },
+  {
+    "nombre":"Mindy",
+    "apellido":"Adkins",
+    "username":"Randall",
+    "password":"Franco",
+    "adminId":0
+  },
+  {
+    "nombre":"Mercedes",
+    "apellido":"Walton",
+    "username":"Cherie",
+    "password":"Ryan",
+    "adminId":0
+  },
+  {
+    "nombre":"Krista",
+    "apellido":"Patton",
+    "username":"Carmella",
+    "password":"Jacobson",
+    "adminId":0
+  },
+  {
+    "nombre":"Morrow",
+    "apellido":"Herring",
+    "username":"Whitehead",
+    "password":"Potter",
+    "adminId":0
+  },
+  {
+    "nombre":"Bianca",
+    "apellido":"Callahan",
+    "username":"Beatriz",
+    "password":"Roslyn",
+    "adminId":0
+  },
+  {
+    "nombre":"Snow",
+    "apellido":"Logan",
+    "username":"Fitzgerald",
+    "password":"Hurst",
+    "adminId":0
+  },
+  {
+    "nombre":"Admin 01",
+    "apellido":"Admin 01",
+    "username":"000000",
+    "password":"password01",
+    "adminId":0
+  },
+  {
+    "nombre":"Admin 02",
+    "apellido":"Admin 02",
+    "username":"admin02",
+    "password":"password01",
+    "adminId":0
+  },
+  {
+    "nombre":"Admin 03",
+    "apellido":"Admin 03",
+    "username":"admin03",
+    "password":"password01",
+    "adminId":0
+  }
+]

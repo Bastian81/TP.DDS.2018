@@ -13,8 +13,17 @@ public class Estandar extends Dispositivo{
         this.horasPorDia = horasPorDia;
     }
 
+    public Estandar(String nombre, Float consumo, int nroSerial, String nombreUsuario, int horasPorDia) {
+        super(nombre, consumo, nroSerial, nombreUsuario);
+        this.horasPorDia = horasPorDia;
+    }
 
+    public int getHorasPorDia() {
+        return horasPorDia;
+    }
 
-
-    //Posee el consumo estandar que esta en Dispositivo
+    public void setHorasPorDia(int horasPorDia) {
+        this.horasPorDia = horasPorDia;
+    }
+//Posee el consumo estandar que esta en Dispositivo
 }

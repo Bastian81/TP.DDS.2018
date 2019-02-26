@@ -15,6 +15,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.joda.time.DateTime;
 import controlador.Sensor;
+import org.joda.time.TimeOfDay;
 
 import javax.persistence.*;
 
@@ -111,6 +112,8 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 	sensores = unosSensores;
 }
 
+	public Cliente(){}
+
 	public Cliente(String nom, String ap, String nomUsuario, String contra, int puntos, String tipoDocumento, int documento, int telefonoContacto, String domicilio, Categoria categoria, List<Inteligente> dispositivosInteligentes, List<Estandar> dipositivosEstandares, DateTime fechaDeAlta, List<Sensor> sensores, Posicion posicion, SimplexManager simplexManager)
 	{
 		super(nom, ap, nomUsuario, contra);
@@ -127,6 +130,47 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 		this.posicion = posicion;
 		this.simplexManager = simplexManager;
 	}
+
+	public Cliente(String nom, String ap, String nomUsuario, String contra, String tipoDocumento, int documento, int telefonoContacto, String domicilio, float latitud,float longitud)
+	{
+		super(nom, ap, nomUsuario, contra);
+		this.puntos = 0;
+		this.tipoDocumento = tipoDocumento;
+		this.documento = documento;
+		this.telefonoContacto = telefonoContacto;
+		this.domicilio = domicilio;
+		this.fechaDeAlta = new DateTime();
+		this.posicion = new Posicion(latitud,longitud);
+	}
+
+	public Cliente(String nom, String ap, String nomUsuario, String contra, String tipoDocumento, int documento, int telefonoContacto, String domicilio, float latitud,float longitud,List<Inteligente> dispositivosInteligentes)
+	{
+		super(nom, ap, nomUsuario, contra);
+		this.puntos = 0;
+		this.tipoDocumento = tipoDocumento;
+		this.documento = documento;
+		this.telefonoContacto = telefonoContacto;
+		this.domicilio = domicilio;
+		this.fechaDeAlta = new DateTime();
+		this.posicion = new Posicion(latitud,longitud);
+		this.dispositivosInteligentes = dispositivosInteligentes;
+	}
+
+	public Cliente(String nom, String ap, String nomUsuario, String contra, String tipoDocumento, int documento, int telefonoContacto, String domicilio, float latitud,float longitud,List<Inteligente> dispositivosInteligentes, List<Sensor> sensores)
+	{
+		super(nom, ap, nomUsuario, contra);
+		this.puntos = 0;
+		this.tipoDocumento = tipoDocumento;
+		this.documento = documento;
+		this.telefonoContacto = telefonoContacto;
+		this.domicilio = domicilio;
+		this.fechaDeAlta = new DateTime();
+		this.posicion = new Posicion(latitud,longitud);
+		this.dispositivosInteligentes = dispositivosInteligentes;
+		this.sensores = sensores;
+	}
+
+
 //SIMPLEX//
 
 		public double getHorasMaxRecomendadas(Inteligente disp, List<Inteligente> disps)
@@ -184,6 +228,16 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 		if(!serialRepetida(nuevoDispositivo.nroSerial())) {
 			puntos += nuevoDispositivo.puntos();
 		}
+	}
+
+	public void agregarInteligentes(List<Inteligente> nuevosDispositivos)
+	{
+
+		for(Inteligente intel: nuevosDispositivos)
+		{
+			agregarInteligente(intel);
+		}
+
 	}
 
 	public void agregarEstandar(Estandar nuevoDispositivo)
@@ -277,6 +331,17 @@ public Cliente(String nom, String ap, String nomUsuario, String contra, String d
 		}
 
 		transformadorDesignado.agregarCliente(this);
+	}
+
+	public float consumoPeriodo(DateTime fechaInicio,DateTime fechaFin)
+	{
+		float consumo = 0;
+
+		for(Inteligente dispositivoInteligente: dispositivosInteligentes)
+			consumo+= dispositivoInteligente.consumoPeriodo(fechaInicio,fechaFin);
+
+		return consumo;
+
 	}
 
 //GEOPOSICIONAMIENTO//

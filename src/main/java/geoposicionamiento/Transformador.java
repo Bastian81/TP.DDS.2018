@@ -1,6 +1,8 @@
 package geoposicionamiento;
 
+import dispositivo.Inteligente;
 import general.Cliente;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import javax.persistence.criteria.Fetch;
@@ -29,7 +31,15 @@ public class Transformador {
 
     String nombreTransformador;
 
-public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
+    public String getNombreTransformador() {
+        return nombreTransformador;
+    }
+
+    public void setNombreTransformador(String nombreTransformador) {
+        this.nombreTransformador = nombreTransformador;
+    }
+
+    public Transformador (double unaLatitud, double unaLongitud/*, int id*/) {
 
     double latitud = unaLatitud;
     double longitud = unaLongitud;
@@ -70,15 +80,26 @@ public void eliminarCliente (Cliente unCliente) {
 }
 
 public double getConsumo()
-{
-    double aux = 0;
-    for(Cliente cliente : this.getClientes())
-    {
-        aux += cliente.consumoMensual();
+        {
+            double aux = 0;
+            for(Cliente cliente : this.getClientes())
+        {
+            aux += cliente.consumoMensual();
+        }
+        return aux;
+        //buscar alternativa:  return this.getClientes().sumAll({cliente -> cliente.getConsumo()});
     }
-    return aux;
 
-    //buscar alternativa:  return this.getClientes().sumAll({cliente -> cliente.getConsumo()});
-}
+
+public float consumoPeriodo(DateTime fechaInicio, DateTime fechaFin)
+    {
+        float consumo = 0;
+
+        for(Cliente cliente: this.getClientes())
+            consumo+= cliente.consumoPeriodo(fechaInicio,fechaFin);
+
+        return consumo;
+
+    }
 
 }

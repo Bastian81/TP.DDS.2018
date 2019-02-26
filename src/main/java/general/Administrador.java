@@ -18,6 +18,11 @@ public class Administrador extends Usuario {
 
 
 	// Constructor
+	public Administrador(String nombre, String ap, String userName, String password) //
+	{
+		super(nombre,ap,userName,password);
+		this.fechaDeAlta = new DateTime();
+	}
 
 	public Administrador(String nombre, String ap, String userName, String password, int numeroId) //
 	{

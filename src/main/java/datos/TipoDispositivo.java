@@ -13,6 +13,11 @@ public class TipoDispositivo {
     @Id
     int id;
 
+    public TipoDispositivo(String nombre, float minimo, float maximo) {
+        this.minimo = minimo;
+        this.maximo = maximo;
+        this.nombre = nombre;
+    }
 
     public float getMinimo() {
         return minimo;

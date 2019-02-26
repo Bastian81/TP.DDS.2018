@@ -1,6 +1,7 @@
 package general;
 
 import Loader.CargadorJSONClase;
+import Loader.*;
 import com.google.gson.reflect.TypeToken;
 import datos.ControlJSON;
 import datos.JSONLoader;
@@ -8,6 +9,7 @@ import datos.Persistencia;
 import datos.TipoDispositivo;
 import dispositivo.Inteligente;
 import geoposicionamiento.ZonaGeografica;
+import org.joda.time.DateTime;
 import web.init_web;
 
 import java.io.File;
@@ -19,9 +21,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CargadorJSONClase nuevoCargador = new CargadorJSONClase();
+        Loader cargadorJSON = new Loader();
+        List<Usuario> usuarios = new ArrayList<>();
+        String username1;
+        String password1;
+        Boolean existe = true;
 
-        nuevoCargador.recargar();
+        System.out.println(new DateTime());
+        System.out.println(new DateTime().minusMonths(1));
+
+
+        //List<Cliente> cliensss = cjson.leerJSON("",tipoCliente);
+
+
+
+        /*for(Usuario usuario: usuarios) {
+
+            if (usuario.getUsername().equals(username1) && usuario.getPassword().equals(password1)) {
+                System.out.println("si");
+
+            }
+            else
+            {
+                System.out.println("no");
+            }
+
+        }*/
 
         //init_web.abrirURL("www.google.com");
 /*

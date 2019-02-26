@@ -48,5 +48,4 @@ public class HistorialConsumo {
         }
         return listaConsumo.stream().filter(historialConsumo -> fechaEstado.isBefore(historialConsumo.getFechaEstado())).collect(Collectors.toList()).get(0).getFechaEstado();
     }
-
 }
